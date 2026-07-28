@@ -1,0 +1,1837 @@
+/* ==========================================================================
+   Simpul component layer. Implements DESIGN.md sections 5 to 9.
+   Every rule here is a build rule made physical, the R-numbers are load bearing.
+   ========================================================================== */
+
+/* ---------- layout primitives ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 32px;
+  }
+}
+
+.section {
+  padding-block: var(--s-8);
+}
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--s-9);
+  }
+}
+@media (min-width: 1025px) {
+  .section {
+    padding-block: var(--s-10);
+  }
+}
+
+.section-tight {
+  padding-block: var(--s-7);
+}
+.band-sand {
+  background: var(--sand);
+}
+.band-tint {
+  background: var(--tint);
+}
+.band-deep {
+  background: var(--brand-deep);
+  color: var(--ivory);
+}
+.band-deep h2,
+.band-deep h3 {
+  color: var(--ivory);
+}
+
+.eyebrow {
+  font-size: var(--t-eyebrow);
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: var(--s-3);
+}
+.band-deep .eyebrow {
+  color: var(--tint);
+}
+
+.lead {
+  font-size: var(--t-body-l);
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+.band-deep .lead {
+  color: var(--tint);
+}
+
+.measure {
+  max-width: 68ch;
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-4);
+  margin-bottom: var(--s-7);
+}
+
+.grid {
+  display: grid;
+  gap: var(--s-5);
+}
+.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1024px) {
+  .cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .cols-2,
+  .cols-3,
+  .cols-4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- R48, mobile snap carousel ----------
+   Any section holding MORE THAN 3 peer items uses .snap-row. Below 768px it
+   becomes a horizontal snap carousel, never a vertical stack and never a
+   cramped grid. QA asserts overflow-x and scroll-snap-type on THIS container. */
+
+.snap-row {
+  display: grid;
+  gap: var(--s-5);
+  grid-auto-flow: row;
+  overflow-x: visible;
+}
+.snap-row.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.snap-row.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.snap-row.cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1024px) {
+  .snap-row.cols-4 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .snap-row,
+  .snap-row.cols-2,
+  .snap-row.cols-3,
+  .snap-row.cols-4 {
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: 82vw;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    padding-bottom: var(--s-4);
+    /* bleed to the viewport edge so cards can peek, without body overflow */
+    margin-inline: -20px;
+    padding-inline: 20px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .snap-row > * {
+    scroll-snap-align: start;
+  }
+}
+@media (max-width: 480px) {
+  .snap-row,
+  .snap-row.cols-2,
+  .snap-row.cols-3,
+  .snap-row.cols-4 {
+    grid-auto-columns: 85vw;
+  }
+}
+
+.snap-hint {
+  display: none;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  margin-top: var(--s-2);
+}
+@media (max-width: 768px) {
+  .snap-hint {
+    display: block;
+  }
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-height: 44px;
+  padding: 12px 22px;
+  font-family: var(--font-body);
+  font-size: var(--t-small);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* R5, every SALES CTA is green. Never --brand. */
+.btn-primary {
+  background: var(--cta);
+  color: var(--white);
+  border-color: var(--cta);
+}
+.btn-primary:hover {
+  background: var(--cta-hover);
+  border-color: var(--cta-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--brand);
+  border-color: var(--brand);
+}
+.btn-outline:hover {
+  background: var(--tint);
+}
+
+.btn-light {
+  background: var(--white);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.btn-light:hover {
+  background: var(--sand);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--brand);
+  border-color: transparent;
+  padding-inline: 8px;
+}
+.btn-ghost:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.btn-onDark {
+  background: transparent;
+  color: var(--ivory);
+  border-color: var(--ivory);
+}
+.btn-onDark:hover {
+  background: rgba(250, 246, 240, 0.12);
+}
+
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+.btn-sm {
+  min-height: 38px;
+  padding: 8px 14px;
+  font-size: var(--t-small);
+}
+
+.link-underline {
+  color: var(--brand);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.link-underline:hover {
+  color: var(--brand-deep);
+}
+
+/* ---------- badges, chips, meta ---------- */
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: var(--t-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.badge-quiet {
+  background: var(--tint);
+  color: var(--brand);
+}
+/* R20: gold text on white with a gold edge, 5.58:1. Never gold on --brand-deep. */
+.badge-attn {
+  background: var(--white);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.badge-cta {
+  background: var(--cta);
+  color: var(--white);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 40px;
+  padding: 8px 16px;
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.chip:hover {
+  background: var(--tint);
+}
+.chip[aria-pressed="true"],
+.chip.is-active {
+  background: var(--brand);
+  color: var(--white);
+  border-color: var(--brand);
+}
+
+.stars {
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  font-size: var(--t-small);
+}
+
+.hairline {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin-block: var(--s-6);
+}
+
+/* ---------- cards ---------- */
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-flat);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.card-pad {
+  padding: var(--s-5);
+}
+.card-hover {
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* R50, text separation.
+   A title plus a secondary label must be two BLOCK children of a flex column
+   with an explicit gap. Two inline text nodes render as
+   "Pashmina Alun VoalVoal premium". This class makes that impossible. */
+.stack-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  min-width: 0;
+}
+.stack-label > .sl-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--t-body-l);
+  line-height: 1.3;
+  color: var(--ink);
+}
+.stack-label > .sl-meta {
+  display: block;
+  font-size: var(--t-small);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.stack-label > .sl-price {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--t-body-l);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---------- forms, R19 visible label + visible placeholder ---------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  min-width: 0;
+}
+.field > label,
+.field-label {
+  display: block;
+  font-size: var(--t-small);
+  font-weight: 600;
+  color: var(--ink);
+}
+.field .hint {
+  display: block;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.input,
+.textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 14px;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  transition: border-color var(--dur) var(--ease);
+}
+.textarea {
+  min-height: 130px;
+  padding-block: 12px;
+  resize: vertical;
+}
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--ink-soft);
+  opacity: 1;
+}
+.input:hover,
+.textarea:hover {
+  border-color: var(--brand);
+}
+.form-error {
+  color: var(--danger);
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.form-ok {
+  color: var(--cta);
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+
+/* ---------- R12 / R21 / R57, custom Select and DatePicker ----------
+   Native <select> is banned. Every panel is display:none when closed so a shut
+   panel cannot contribute layout, and every panel carries a viewport clamp. */
+
+.cs {
+  position: relative;
+  min-width: 0;
+}
+.cs-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 14px;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  font-size: var(--t-body);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease);
+}
+.cs-trigger:hover {
+  border-color: var(--brand);
+}
+.cs-trigger .cs-value {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cs-trigger .cs-value.is-placeholder {
+  color: var(--ink-soft);
+}
+.cs-chev {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--brand);
+  border-bottom: 2px solid var(--brand);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 260ms var(--ease);
+}
+.cs[data-open="true"] .cs-chev {
+  transform: rotate(-135deg) translate(-2px, -2px);
+}
+
+/* R57: display:none when closed, not merely faded. A visibility:hidden panel
+   still occupies layout and still widens scrollWidth. */
+.cs-panel {
+  display: none;
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 100%;
+  max-width: calc(100vw - 2rem);
+  max-height: 280px;
+  overflow-y: auto;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-panel);
+  padding: var(--s-2);
+}
+.cs[data-open="true"] .cs-panel {
+  display: block;
+  animation: panel-in 200ms var(--ease);
+}
+/* anchor away from the nearer viewport edge, R16.1 geometry */
+.cs-panel[data-anchor="right"] {
+  left: auto;
+  right: 0;
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cs-opt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: 10px 12px;
+  min-height: 44px;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--ink);
+}
+.cs-opt:hover,
+.cs-opt.is-active {
+  background: var(--tint);
+}
+.cs-opt[aria-selected="true"] {
+  background: var(--brand);
+  color: var(--white);
+}
+.cs-opt .cs-opt-label {
+  display: block;
+  font-size: var(--t-body);
+}
+.cs-opt .cs-opt-meta {
+  display: block;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+.cs-opt[aria-selected="true"] .cs-opt-meta {
+  color: var(--tint);
+}
+
+/* DatePicker, R21. Same panel contract as Select. */
+.dp-panel {
+  display: none;
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 4px);
+  left: 0;
+  width: min(320px, calc(100vw - 2rem));
+  max-width: calc(100vw - 2rem);
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-panel);
+  padding: var(--s-4);
+}
+.cs[data-open="true"] .dp-panel {
+  display: block;
+  animation: panel-in 200ms var(--ease);
+}
+.dp-panel[data-anchor="right"] {
+  left: auto;
+  right: 0;
+}
+.dp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin-bottom: var(--s-3);
+}
+.dp-title {
+  font-family: var(--font-display);
+  font-size: var(--t-body-l);
+}
+.dp-nav {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  color: var(--brand);
+  cursor: pointer;
+}
+.dp-nav:hover {
+  background: var(--tint);
+}
+.dp-nav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.dp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 2px;
+}
+.dp-dow {
+  font-size: var(--t-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-align: center;
+  padding-block: 6px;
+}
+.dp-day {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid transparent;
+  color: var(--ink);
+  font-size: var(--t-small);
+  cursor: pointer;
+}
+.dp-day:hover:not(:disabled) {
+  background: var(--tint);
+}
+.dp-day:disabled {
+  color: var(--ink-soft);
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.dp-day.is-today {
+  border-color: var(--line-strong);
+}
+.dp-day[aria-selected="true"] {
+  background: var(--brand);
+  color: var(--white);
+  border-color: var(--brand);
+}
+
+/* ---------- header, R16 / R16.1 / R31 / R32 / R47 / R53 ---------- */
+
+.announce {
+  background: var(--brand-deep);
+  color: var(--ivory);
+  font-size: var(--t-small);
+  min-height: var(--announce-h);
+  display: flex;
+  align-items: center;
+}
+.announce-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  text-align: center;
+  padding-block: 6px;
+}
+.announce a {
+  color: var(--ivory);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* R31 locked decision: SOLID ivory from first paint. Never transparent over the
+   hero, in any scroll state. There is deliberately NO backdrop-filter here,
+   which also keeps R53 safe: a filtered header would become the containing
+   block for any position:fixed descendant. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--ivory);
+  border-bottom: 1px solid var(--line-strong);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  min-height: var(--header-h);
+}
+
+/* brand lockup. R50: the tagline is a BLOCK child, never an inline <small>,
+   otherwise the footer reads "SimpulHIJAB MODERN". */
+.brand-lock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 0 0 auto;
+}
+.brand-lock img {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  line-height: 1;
+}
+.brand-word {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  line-height: 1.05;
+}
+.brand-tag {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  line-height: 1.3;
+}
+
+.nav-desktop {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: var(--s-1);
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-item {
+  position: relative;
+}
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 14px;
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--dur) var(--ease);
+}
+.nav-link:hover,
+.nav-item[data-open="true"] > .nav-link {
+  color: var(--brand);
+}
+.nav-link[aria-current="page"],
+.nav-link.is-active {
+  color: var(--brand);
+  font-weight: 600;
+}
+.nav-chev {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-1px, -1px);
+  transition: transform 260ms var(--ease);
+}
+.nav-item[data-open="true"] .nav-chev {
+  transform: rotate(-135deg) translate(-1px, -1px);
+}
+
+/* R16.1 + R57 geometry.
+   Closed panels are display:none so they cannot widen scrollWidth. Every panel
+   carries max-width: calc(100vw - 2rem). The leftmost trigger anchors left:0
+   and grows right, the rightmost anchors right:0 and grows left. Nothing is
+   blind-centred to a narrow <li>, which is what escaped the viewport at
+   ~1025px on Dapur Tepat. */
+.mega {
+  display: none;
+  position: absolute;
+  z-index: 55;
+  top: calc(100% + 1px);
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-panel);
+  padding: var(--s-6);
+}
+.nav-item[data-open="true"] > .mega {
+  display: block;
+  animation: panel-in 260ms var(--ease);
+}
+.mega[data-anchor="left"] {
+  left: 0;
+}
+.mega[data-anchor="right"] {
+  right: 0;
+}
+.mega[data-anchor="center"] {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mega-cols {
+  display: grid;
+  grid-template-columns: repeat(var(--mega-cols, 2), minmax(190px, 240px));
+  gap: var(--s-6);
+}
+.mega-col-head {
+  font-size: var(--t-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: var(--s-3);
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--line);
+}
+.mega-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+/* R50: title and meta are separate blocks with a gap. */
+.mega-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 10px;
+  min-height: 44px;
+  justify-content: center;
+  color: var(--ink);
+  transition: background var(--dur) var(--ease);
+}
+.mega-link:hover {
+  background: var(--tint);
+}
+.mega-link .mt {
+  display: block;
+  font-size: var(--t-body);
+  font-weight: 500;
+  line-height: 1.35;
+}
+.mega-link .md {
+  display: block;
+  font-size: var(--t-small);
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+.mega-aside {
+  border-left: 1px solid var(--line);
+  padding-left: var(--s-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  max-width: 260px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex: 0 0 auto;
+}
+.icon-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.icon-btn:hover {
+  background: var(--tint);
+  border-color: var(--line-strong);
+}
+.cart-count {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  padding-inline: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cta);
+  color: var(--white);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.header-cta {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .header-cta {
+    display: inline-flex;
+  }
+}
+
+/* R47: at <=480px the topbar holds only the logo, cart, and the burger, in one
+   clean flex row with a fixed height. Any CTA lives inside the drawer. */
+.burger {
+  display: inline-flex;
+}
+@media (min-width: 1025px) {
+  .burger {
+    display: none;
+  }
+}
+.burger-bars {
+  display: block;
+  position: relative;
+  width: 20px;
+  height: 2px;
+  background: var(--ink);
+  transition: background var(--dur) var(--ease);
+}
+.burger-bars::before,
+.burger-bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform var(--dur) var(--ease), top var(--dur) var(--ease);
+}
+.burger-bars::before {
+  top: -6px;
+}
+.burger-bars::after {
+  top: 6px;
+}
+.burger[aria-expanded="true"] .burger-bars {
+  background: transparent;
+}
+.burger[aria-expanded="true"] .burger-bars::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.burger[aria-expanded="true"] .burger-bars::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 480px) {
+  .brand-tag {
+    display: none;
+  }
+  .header-inner {
+    gap: var(--s-3);
+  }
+}
+
+/* ---------- drawer, R53 ----------
+   Rendered as a SIBLING of <header>, never inside it. An ancestor carrying
+   backdrop-filter / filter / transform becomes the containing block for a
+   position:fixed child, which collapses the drawer to the header's own height
+   and reads as a narrow strip. */
+
+.drawer-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgba(21, 24, 30, 0.5);
+  animation: fade-in 200ms var(--ease);
+}
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 71;
+  width: min(380px, 88vw);
+  max-width: 100vw;
+  background: var(--ivory);
+  border-left: 1px solid var(--line-strong);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: drawer-in 260ms var(--ease);
+}
+@keyframes drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-4) 20px;
+  border-bottom: 1px solid var(--line-strong);
+  min-height: var(--header-h);
+}
+.drawer-body {
+  padding: var(--s-5) 20px var(--s-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.drawer-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 0;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.drawer-link .mt {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--t-body-l);
+  line-height: 1.3;
+}
+.drawer-link .md {
+  display: block;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+.drawer-sub {
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--s-4);
+  border-left: 2px solid var(--line);
+  margin-block: var(--s-2);
+}
+.drawer-group {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 260ms var(--ease);
+}
+.drawer-group[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.drawer-group > div {
+  overflow: hidden;
+}
+
+/* ---------- hero, R2 / R31 ---------- */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(520px, 78vh, 760px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--brand-deep);
+}
+.hero-media,
+.hero-media video,
+.hero-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+/* R2: a bottom anchored gradient over the lower 45%, not a full section wash.
+   Decorative, therefore pointer-events:none and below the copy. */
+.hero-scrim {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 45%;
+  background: linear-gradient(to bottom, var(--hero-scrim-from), var(--hero-scrim-to));
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--s-8) var(--s-9);
+  color: var(--ivory);
+  max-width: 720px;
+}
+.hero-copy h1 {
+  color: var(--ivory);
+  font-size: var(--t-display-xl);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.hero-copy .eyebrow {
+  color: var(--tint);
+}
+.hero-copy .lead {
+  color: var(--ivory);
+  margin-top: var(--s-4);
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-6);
+}
+
+.pagehero {
+  background: var(--sand);
+  border-bottom: 1px solid var(--line-strong);
+  padding-block: var(--s-7);
+}
+.breadcrumb {
+  display: block;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  margin-bottom: var(--s-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.breadcrumb a {
+  color: var(--brand);
+}
+
+/* ---------- media placeholders ----------
+   Stage 3 ships boxes that carry their own generation brief. Stage 5 swaps
+   them for real <img>/<video> once Stage 4 lands the files. */
+
+.ph {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-4);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--sand),
+    var(--sand) 12px,
+    var(--ivory) 12px,
+    var(--ivory) 24px
+  );
+  border: 1px dashed var(--line-strong);
+  overflow: hidden;
+  min-height: 120px;
+}
+.ph-tag {
+  display: block;
+  max-width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid var(--line-strong);
+  padding: 8px 10px;
+  text-align: center;
+}
+.ratio-1-1 {
+  aspect-ratio: 1 / 1;
+}
+.ratio-4-5 {
+  aspect-ratio: 4 / 5;
+}
+.ratio-3-4 {
+  aspect-ratio: 3 / 4;
+}
+.ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+.ratio-3-2 {
+  aspect-ratio: 3 / 2;
+}
+.ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+/* ---------- product ---------- */
+
+.pcard {
+  position: relative;
+}
+.pcard-media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.pcard-badges {
+  position: absolute;
+  top: var(--s-3);
+  left: var(--s-3);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-2);
+  pointer-events: none;
+}
+.pcard-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  flex: 1 1 auto;
+}
+.pcard-actions {
+  display: flex;
+  gap: var(--s-2);
+  margin-top: auto;
+}
+.pcard-actions .btn {
+  flex: 1 1 auto;
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  align-items: center;
+}
+/* colour swatches are the documented radius exception companion to the WA
+   button: they stay square here because R10 has no swatch carve out. */
+.swatch {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line-strong);
+  cursor: pointer;
+  padding: 0;
+  background-clip: padding-box;
+  transition: outline-offset var(--dur) var(--ease);
+}
+.swatch[aria-pressed="true"],
+.swatch[aria-checked="true"] {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+.swatch-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+/* R18 gallery */
+.gallery {
+  display: grid;
+  gap: var(--s-3);
+}
+.gallery-main {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+}
+.gallery-frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 260ms var(--ease);
+  pointer-events: none;
+}
+.gallery-frame.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-2);
+}
+.thumb {
+  position: relative;
+  padding: 0;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  cursor: pointer;
+  overflow: hidden;
+  transition: outline-offset var(--dur) var(--ease), opacity var(--dur) var(--ease);
+  opacity: 0.7;
+}
+.thumb:hover {
+  opacity: 1;
+}
+.thumb[aria-selected="true"],
+.thumb.is-active {
+  opacity: 1;
+  outline: 2px solid var(--brand);
+  outline-offset: -1px;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+}
+.spec-table th,
+.spec-table td {
+  text-align: left;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.spec-table th {
+  width: 42%;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.spec-table td {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+.price-now {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  color: var(--ink);
+}
+.price-was {
+  font-size: var(--t-body);
+  color: var(--ink-soft);
+  text-decoration: line-through;
+}
+
+/* ---------- accordion, R7 FAQ ---------- */
+
+.acc-item {
+  border-bottom: 1px solid var(--line-strong);
+}
+.acc-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  width: 100%;
+  min-height: 60px;
+  padding: 18px 0;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  color: var(--ink);
+}
+.acc-trigger:hover {
+  color: var(--brand);
+}
+.acc-icon {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--brand);
+  border-bottom: 2px solid var(--brand);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 260ms var(--ease);
+}
+.acc-item[data-open="true"] .acc-icon {
+  transform: rotate(-135deg) translate(-2px, -2px);
+}
+.acc-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 260ms var(--ease);
+}
+.acc-item[data-open="true"] .acc-panel {
+  grid-template-rows: 1fr;
+}
+.acc-panel > div {
+  overflow: hidden;
+}
+.acc-panel .acc-inner {
+  padding-bottom: var(--s-5);
+  color: var(--ink-soft);
+  max-width: 68ch;
+}
+
+/* ---------- tabs ---------- */
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  border-bottom: 1px solid var(--line-strong);
+  margin-bottom: var(--s-6);
+}
+.tab {
+  min-height: 44px;
+  padding: 10px 16px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--ink-soft);
+  font-size: var(--t-small);
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: -1px;
+}
+.tab:hover {
+  color: var(--brand);
+}
+.tab[aria-selected="true"] {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+}
+
+/* ---------- modal / dialog, R13 / R52 ----------
+   Portalled to document.body, never nested in the header. Centred and fitting
+   the viewport at 375px, never a narrow strip over the topbar. */
+
+.modal-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(21, 24, 30, 0.62);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-4);
+  animation: fade-in 200ms var(--ease);
+  overflow-y: auto;
+}
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: calc(100vh - 2 * var(--s-4));
+  overflow-y: auto;
+  background: var(--ivory);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-panel);
+  animation: modal-in 260ms var(--ease);
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.modal-close {
+  position: absolute;
+  top: var(--s-3);
+  right: var(--s-3);
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  cursor: pointer;
+  z-index: 2;
+}
+.modal-close:hover {
+  background: var(--sand);
+}
+.modal-body {
+  padding: var(--s-7) var(--s-6) var(--s-6);
+}
+@media (max-width: 480px) {
+  .modal-body {
+    padding: var(--s-7) var(--s-5) var(--s-5);
+  }
+}
+
+/* ---------- floating layers, R10 / R17 / R37 / R45 ---------- */
+
+.wa-float {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cta);
+  color: var(--white);
+  border: 1px solid var(--cta);
+  box-shadow: 0 10px 24px -12px rgba(21, 24, 30, 0.55);
+  transition: background var(--dur) var(--ease);
+}
+.wa-float:hover {
+  background: var(--cta-hover);
+}
+.wa-float img {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+}
+.wa-float .wa-label {
+  display: none;
+  font-size: var(--t-small);
+  font-weight: 600;
+  white-space: nowrap;
+}
+/* mobile: the single documented R10 oval exception, icon only */
+@media (max-width: 1024px) {
+  .wa-float {
+    width: 56px;
+    height: 56px;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0;
+  }
+}
+/* R45 desktop: [icon] + CTA label, rectangular per R10 */
+@media (min-width: 1025px) {
+  .wa-float {
+    right: 24px;
+    bottom: 24px;
+    padding: 12px 18px;
+    min-height: 52px;
+  }
+  .wa-float .wa-label {
+    display: block;
+  }
+}
+
+/* R37 portfolio CTA. Opposite corner from the WA float so the two tap targets
+   can never overlap, on any breakpoint. */
+.pcta {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 79;
+  width: min(340px, calc(100vw - 32px));
+  background: var(--white);
+  border: 1px solid var(--brand);
+  box-shadow: var(--shadow-panel);
+  padding: var(--s-4) var(--s-5) var(--s-4) var(--s-4);
+  animation: pcta-in 320ms var(--ease);
+}
+@keyframes pcta-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.pcta-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--t-body-l);
+  line-height: 1.3;
+  color: var(--ink);
+  padding-right: var(--s-6);
+}
+.pcta-sub {
+  display: block;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  margin-top: var(--s-1);
+}
+.pcta-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.pcta-close:hover {
+  background: var(--tint);
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+@media (max-width: 1024px) {
+  /* keep clear of the 56px WA oval plus its 16px inset */
+  .pcta {
+    left: 16px;
+    right: 16px;
+    bottom: 88px;
+    width: auto;
+  }
+}
+
+/* ---------- footer, R43 ---------- */
+
+.footer {
+  background: var(--brand-deep);
+  color: var(--ivory);
+  padding-block: var(--s-9) var(--s-6);
+}
+.footer h3,
+.footer .foot-head {
+  color: var(--ivory);
+  font-size: var(--t-eyebrow);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--s-4);
+}
+.footer a {
+  color: var(--ivory);
+}
+.footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer p,
+.footer .foot-muted {
+  color: var(--tint);
+}
+/* R43: on --brand-deep the logo MUST be the white knockout variant. */
+.footer .brand-word {
+  color: var(--ivory);
+}
+.footer .brand-tag {
+  color: var(--tint);
+}
+.foot-grid {
+  display: grid;
+  gap: var(--s-7);
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+}
+@media (max-width: 1024px) {
+  .foot-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 480px) {
+  .foot-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.foot-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.foot-bottom {
+  margin-top: var(--s-8);
+  padding-top: var(--s-5);
+  border-top: 1px solid rgba(220, 228, 239, 0.24);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  font-size: var(--t-small);
+  color: var(--tint);
+}
+
+/* ---------- scroll reveal, R24 / R34 ----------
+   The revealed state is written at specificity 0,3,0 so it out-ranks EVERY
+   hide rule regardless of source order. There is deliberately NO
+   `.js .reveal { opacity: 0 }` rule: the base rule below already hides, and
+   adding the .js-prefixed twin at equal specificity is exactly what locked
+   every below-the-fold section at opacity:0 on Mabrur. */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 500ms var(--ease), transform 500ms var(--ease);
+}
+.reveal.in,
+.js .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+/* content must remain readable with JS off */
+html:not(.js) .reveal {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- page transition, R46 ---------- */
+
+.page-shell {
+  animation: page-enter 220ms var(--ease);
+}
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-shell {
+    animation: none;
+  }
+}
+
+/* ---------- utilities ---------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  color: var(--brand);
+  padding: 12px 18px;
+  border: 2px solid var(--brand);
+}
+.skip-link:focus {
+  left: 8px;
+  top: 8px;
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.stack-sm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  align-items: center;
+}
+.mt-4 {
+  margin-top: var(--s-4);
+}
+.mt-5 {
+  margin-top: var(--s-5);
+}
+.mt-6 {
+  margin-top: var(--s-6);
+}
+.mt-7 {
+  margin-top: var(--s-7);
+}
+.text-soft {
+  color: var(--ink-soft);
+}
+.text-small {
+  font-size: var(--t-small);
+}
+.no-scroll {
+  overflow: hidden;
+}

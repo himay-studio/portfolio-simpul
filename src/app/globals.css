@@ -1,0 +1,165 @@
+@import "tailwindcss";
+@import "./site.css";
+
+/* ==========================================================================
+   Simpul design tokens. Source of truth: DESIGN.md section 8.
+   Do not invent new colour values here, add them to DESIGN.md first.
+   ========================================================================== */
+
+:root {
+  /* surfaces */
+  --ivory: #faf6f0;
+  --white: #ffffff;
+  --sand: #efe6d9;
+  --tint: #dce4ef;
+
+  /* type colour */
+  --ink: #15181e;
+  --ink-soft: #4c5462;
+
+  /* brand */
+  --brand: #23375c;
+  --brand-deep: #16233b;
+  --gold: #8c5f14;
+
+  /* sales cta, R5 */
+  --cta: #12694a;
+  --cta-hover: #0e5539;
+
+  /* lines and state */
+  --line: #e4dcd0;
+  --line-strong: #8f7e66;
+  --focus: #23375c;
+  --danger: #a3231b;
+
+  /* hero */
+  --hero-scrim-from: rgba(21, 24, 30, 0);
+  --hero-scrim-to: rgba(21, 24, 30, 0.55);
+
+  /* type */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --t-display-xl: clamp(2.5rem, 6vw, 4.5rem);
+  --t-display-l: clamp(2rem, 4.5vw, 3.25rem);
+  --t-h2: clamp(1.625rem, 3vw, 2.25rem);
+  --t-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --t-body-l: 1.125rem;
+  --t-body: 1rem;
+  --t-small: 0.875rem;
+  --t-eyebrow: 0.75rem;
+
+  /* space */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --container: 1200px;
+
+  /* shape, R10 */
+  --radius: 0;
+  --shadow-flat: none;
+  --shadow-lift: 0 12px 28px -18px rgba(21, 24, 30, 0.35);
+  --shadow-panel: 0 18px 40px -24px rgba(21, 24, 30, 0.4);
+
+  /* motion */
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur: 200ms;
+
+  /* chrome metrics */
+  --header-h: 72px;
+  --announce-h: 38px;
+}
+
+/* R10 global enforcement. The mobile WhatsApp oval opts out explicitly. */
+*,
+*::before,
+*::after {
+  border-radius: var(--radius);
+  box-sizing: border-box;
+}
+
+html {
+  /* anchor jumps clear the sticky header */
+  scroll-padding-top: calc(var(--header-h) + var(--s-5));
+  /* R19 / R57 guard: nothing may push the document sideways */
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.display {
+  font-family: var(--font-display);
+  font-variation-settings: "SOFT" 0, "WONK" 0;
+  color: var(--ink);
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--t-display-l);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+h2 {
+  font-size: var(--t-h2);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+h3 {
+  font-size: var(--t-h3);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+
+p {
+  margin: 0;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
