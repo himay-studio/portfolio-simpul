@@ -1,0 +1,3467 @@
+# MEDIA.md, Simpul
+
+Stage 3 output, Site Architect. **This is the contract Stage 4 executes.**
+
+74 aset, 73 gambar dan 1 video.
+Tutorial langkah demi langkah untuk manusia ada di `MEDIA-HOWTO.md`.
+
+> **File ini digenerate.** Sumbernya `scripts/media-assets.mjs` (SUBJECT per aset,
+> ditulis tangan) plus blok PHOTO DNA dan NEGATIVE yang disalin verbatim dari
+> `ART-DIRECTION.md`. Jalankan `node scripts/gen-media.mjs` setelah mengubah
+> sumbernya. Jangan edit `MEDIA.md` langsung, editanmu akan tertimpa.
+
+---
+
+## Aturan yang mengikat Stage 4
+
+1. **Nama file harus PERSIS seperti kolom path.** Salah satu huruf saja dan gambarnya
+   hilang di build. Placeholder di kode membawa `data-media` yang isinya path yang sama
+   persis, jadi keduanya bisa dicocokkan otomatis.
+2. **Paste SUBJECT plus PHOTO DNA plus NEGATIVE, ketiganya.** Mengirim SUBJECT saja
+   adalah cara paling cepat menghasilkan AI slop, dan R33 menolaknya.
+3. **R49, satu subjek spesifik per aset.** Tidak ada satu gambar yang dipakai di dua slot.
+   Jumlah blok SUBJECT di dokumen ini sama dengan jumlah path, 74 banding 74.
+4. **R30 dan R44, video hero WAJIB.** `M02` bukan opsional dan poster Ken Burns bukan
+   pengganti yang sah. Situs tidak boleh dideploy dengan hero tanpa mp4 yang benar benar
+   berputar, kecuali owner menyetujuinya tertulis untuk situs ini secara spesifik.
+5. **R15, jangan pernah menunjuk file yang belum ada.** Komponen `Media` di Stage 3
+   merender kotak beranotasi, bukan `<video>` mati. Stage 5 baru menggantinya jadi
+   `<img>` dan `<video>` setelah filenya benar benar ada di disk.
+6. **Cek mata sebelum menutup Stage 4.** Sepuluh pertanyaan self check ada di
+   `ART-DIRECTION.md` section 9. Regenerate yang gagal, maksimal dua kali per aset.
+
+### Catatan crop untuk galeri produk
+
+Frame galeri di `/produk/[slug]/` dirender dalam kotak 4:5 dengan `object-fit: cover`.
+Artinya frame S2 dan S5 yang 1:1 dan frame S3 yang 3:4 akan terpotong di sisi kiri dan
+kanan ketika tampil sebagai foto utama. Susun subjeknya di area tengah, jangan menaruh
+detail penting seperti plat kuningan atau jahitan tepi tepat di pinggir frame.
+
+### Larangan kategori, dari `BRAND.md` section 2
+
+Ini kain, bukan produk botolan. **Jangan pernah** menghasilkan botol kaca, botol amber,
+botol plastik, drigen, toples, jar, pump bottle, tube, sachet, kemasan apotek, atau label
+kraft ala apothecary untuk brand ini. Latar kraft coklat, set apothecary gelap, dan grade
+tungsten oranye juga dilarang, itu palet minyak esensial dan itulah kegagalan yang sudah
+pernah dikirim di Bersihara.
+
+---
+
+## Ringkasan, 74 aset
+
+| ID | Path | Tipe | Rasio | Resep | Dipakai di |
+| --- | --- | --- | --- | --- | --- |
+| `M01` | `public/img/hero-simpul-poster.jpg` | image | 16:9 | H1 still | Poster still for the hero video, and the closing CTA band on the home page |
+| `M02` | `public/video/hero-simpul.mp4` | video | 16:9 | H1 | Home page hero background. MANDATORY, R30 and R44. |
+| `M03` | `public/img/categories/pashmina.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/pashmina/ |
+| `M04` | `public/img/categories/segi-empat.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/segi-empat/ |
+| `M05` | `public/img/categories/bergo-instan.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/bergo-instan/ |
+| `M06` | `public/img/categories/sport.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/sport/ |
+| `M07` | `public/img/categories/inner-ciput.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/inner-ciput/ |
+| `M08` | `public/img/categories/aksesoris.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/aksesoris/ |
+| `M09` | `public/img/products/pashmina-alun-voal-1.jpg` | image | 4:5 | S1 | Card image for Pashmina Alun Voal everywhere it appears, plus gallery frame 1 on /produk/pashmina-alun-voal/ |
+| `M10` | `public/img/products/pashmina-alun-voal-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-alun-voal/ |
+| `M11` | `public/img/products/pashmina-alun-voal-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-alun-voal/ |
+| `M12` | `public/img/products/pashmina-alun-voal-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-alun-voal/ |
+| `M13` | `public/img/products/pashmina-alun-ceruty-1.jpg` | image | 4:5 | S1 | Card image for Pashmina Alun Ceruty Babydoll everywhere it appears, plus gallery frame 1 on /produk/pashmina-alun-ceruty/ |
+| `M14` | `public/img/products/pashmina-alun-ceruty-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-alun-ceruty/ |
+| `M15` | `public/img/products/pashmina-alun-ceruty-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-alun-ceruty/ |
+| `M16` | `public/img/products/pashmina-alun-ceruty-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-alun-ceruty/ |
+| `M17` | `public/img/products/pashmina-bilah-diamond-1.jpg` | image | 4:5 | S1 | Card image for Pashmina Bilah Diamond Crepe everywhere it appears, plus gallery frame 1 on /produk/pashmina-bilah-diamond/ |
+| `M18` | `public/img/products/pashmina-bilah-diamond-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-bilah-diamond/ |
+| `M19` | `public/img/products/pashmina-bilah-diamond-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-bilah-diamond/ |
+| `M20` | `public/img/products/pashmina-bilah-diamond-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-bilah-diamond/ |
+| `M21` | `public/img/products/pashmina-sanding-viscose-1.jpg` | image | 4:5 | S1 | Card image for Pashmina Sanding Viscose everywhere it appears, plus gallery frame 1 on /produk/pashmina-sanding-viscose/ |
+| `M22` | `public/img/products/pashmina-sanding-viscose-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-sanding-viscose/ |
+| `M23` | `public/img/products/pashmina-sanding-viscose-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-sanding-viscose/ |
+| `M24` | `public/img/products/pashmina-sanding-viscose-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-sanding-viscose/ |
+| `M25` | `public/img/products/segi-empat-titik-voal-1.jpg` | image | 4:5 | S1 | Card image for Segi Empat Titik Voal everywhere it appears, plus gallery frame 1 on /produk/segi-empat-titik-voal/ |
+| `M26` | `public/img/products/segi-empat-titik-voal-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-titik-voal/ |
+| `M27` | `public/img/products/segi-empat-titik-voal-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-titik-voal/ |
+| `M28` | `public/img/products/segi-empat-titik-voal-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-titik-voal/ |
+| `M29` | `public/img/products/segi-empat-kanvas-polycotton-1.jpg` | image | 4:5 | S1 | Card image for Segi Empat Kanvas Polycotton everywhere it appears, plus gallery frame 1 on /produk/segi-empat-kanvas-polycotton/ |
+| `M30` | `public/img/products/segi-empat-kanvas-polycotton-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-kanvas-polycotton/ |
+| `M31` | `public/img/products/segi-empat-kanvas-polycotton-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-kanvas-polycotton/ |
+| `M32` | `public/img/products/segi-empat-kanvas-polycotton-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-kanvas-polycotton/ |
+| `M33` | `public/img/products/segi-empat-sulur-voal-1.jpg` | image | 4:5 | S1 | Card image for Segi Empat Sulur Voal Motif everywhere it appears, plus gallery frame 1 on /produk/segi-empat-sulur-voal/ |
+| `M34` | `public/img/products/segi-empat-sulur-voal-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-sulur-voal/ |
+| `M35` | `public/img/products/segi-empat-sulur-voal-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-sulur-voal/ |
+| `M36` | `public/img/products/segi-empat-sulur-voal-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-sulur-voal/ |
+| `M37` | `public/img/products/segi-empat-satin-lembayung-1.jpg` | image | 4:5 | S1 | Card image for Segi Empat Satin Lembayung everywhere it appears, plus gallery frame 1 on /produk/segi-empat-satin-lembayung/ |
+| `M38` | `public/img/products/segi-empat-satin-lembayung-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-satin-lembayung/ |
+| `M39` | `public/img/products/segi-empat-satin-lembayung-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-satin-lembayung/ |
+| `M40` | `public/img/products/segi-empat-satin-lembayung-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-satin-lembayung/ |
+| `M41` | `public/img/products/bergo-rapi-jersey-1.jpg` | image | 4:5 | S1 | Card image for Bergo Rapi Jersey everywhere it appears, plus gallery frame 1 on /produk/bergo-rapi-jersey/ |
+| `M42` | `public/img/products/bergo-rapi-jersey-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/bergo-rapi-jersey/ |
+| `M43` | `public/img/products/bergo-rapi-jersey-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/bergo-rapi-jersey/ |
+| `M44` | `public/img/products/bergo-rapi-jersey-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/bergo-rapi-jersey/ |
+| `M45` | `public/img/products/bergo-kerja-instan-voal-1.jpg` | image | 4:5 | S1 | Card image for Bergo Kerja Instan Voal everywhere it appears, plus gallery frame 1 on /produk/bergo-kerja-instan-voal/ |
+| `M46` | `public/img/products/bergo-kerja-instan-voal-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/bergo-kerja-instan-voal/ |
+| `M47` | `public/img/products/bergo-kerja-instan-voal-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/bergo-kerja-instan-voal/ |
+| `M48` | `public/img/products/bergo-kerja-instan-voal-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/bergo-kerja-instan-voal/ |
+| `M49` | `public/img/products/sport-hijab-laju-1.jpg` | image | 4:5 | S1 | Card image for Sport Hijab Laju everywhere it appears, plus gallery frame 1 on /produk/sport-hijab-laju/ |
+| `M50` | `public/img/products/sport-hijab-laju-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/sport-hijab-laju/ |
+| `M51` | `public/img/products/sport-hijab-laju-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/sport-hijab-laju/ |
+| `M52` | `public/img/products/sport-hijab-laju-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/sport-hijab-laju/ |
+| `M53` | `public/img/products/inner-ninja-antem-1.jpg` | image | 4:5 | S1 | Card image for Inner Ninja Antem everywhere it appears, plus gallery frame 1 on /produk/inner-ninja-antem/ |
+| `M54` | `public/img/products/inner-ninja-antem-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/inner-ninja-antem/ |
+| `M55` | `public/img/products/inner-ninja-antem-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/inner-ninja-antem/ |
+| `M56` | `public/img/products/inner-ninja-antem-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/inner-ninja-antem/ |
+| `M57` | `public/img/products/set-jarum-magnet-1.jpg` | image | 4:5 | S1 | Card image for Set Jarum Magnet Simpul everywhere it appears, plus gallery frame 1 on /produk/set-jarum-magnet/ |
+| `M58` | `public/img/products/set-jarum-magnet-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/set-jarum-magnet/ |
+| `M59` | `public/img/products/set-jarum-magnet-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/set-jarum-magnet/ |
+| `M60` | `public/img/products/set-jarum-magnet-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/set-jarum-magnet/ |
+| `M61` | `public/img/products/pouch-kanvas-1.jpg` | image | 4:5 | S1 | Card image for Pouch Simpul Kanvas everywhere it appears, plus gallery frame 1 on /produk/pouch-kanvas/ |
+| `M62` | `public/img/products/pouch-kanvas-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/pouch-kanvas/ |
+| `M63` | `public/img/products/pouch-kanvas-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/pouch-kanvas/ |
+| `M64` | `public/img/products/pouch-kanvas-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/pouch-kanvas/ |
+| `M65` | `public/img/articles/cara-pakai-pashmina-kantor.jpg` | image | 16:9 | S7 | Cover for /artikel/cara-pakai-pashmina-simpel-ke-kantor/, and its card in the article index |
+| `M66` | `public/img/articles/beda-voal-ceruty-diamond.jpg` | image | 16:9 | S7 | Cover for /artikel/beda-voal-ceruty-diamond-crepe/, and its card in the article index |
+| `M67` | `public/img/articles/panduan-warna-hijab-2026.jpg` | image | 16:9 | S7 | Cover for /artikel/panduan-warna-hijab-2026/, and its card in the article index |
+| `M68` | `public/img/articles/rahasia-hijab-tidak-letoy.jpg` | image | 16:9 | S7 | Cover for /artikel/rahasia-hijab-tidak-mudah-letoy/, and its card in the article index |
+| `M69` | `public/img/articles/segi-empat-110-atau-115.jpg` | image | 16:9 | S7 | Cover for /artikel/segi-empat-110-atau-115/, and its card in the article index |
+| `M70` | `public/img/articles/sport-hijab-bukan-jersey-biasa.jpg` | image | 16:9 | S7 | Cover for /artikel/sport-hijab-bukan-jersey-biasa/, and its card in the article index |
+| `M71` | `public/img/about/atelier-simpul.jpg` | image | 3:2 | S8 | About page, brand story section |
+| `M72` | `public/img/packaging/simpul-unboxing.jpg` | image | 4:3 | S6 | Product detail page, packaging section |
+| `M73` | `public/img/lookbook/lookbook-pagi.jpg` | image | 3:2 | S1 wide | Home page, lookbook section |
+| `M74` | `public/img/lookbook/lookbook-sore.jpg` | image | 3:2 | S1 wide | About page, closing section |
+
+---
+
+## Prompt lengkap, satu per aset
+
+### M01, `public/img/hero-simpul-poster.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 16:9 |
+| Resep foto | H1 still |
+| Dipakai di | Poster still for the hero video, and the closing CTA band on the home page |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A dark, moody daylight studio. A single large window camera left is the only light and the room falls away into deep charcoal and indigo shadow. A young Indonesian woman seen from the chest up at a three quarter angle wears a soft neutral voal hijab, her face turned partly toward the light so one side stays in shadow. The scarf drapes across her shoulder with real weight. Deep shadows, muted desaturated warm neutral grade, the fabric weave still visible in the highlights. This is the locked first frame of the hero clip, so it must match it in tone, wardrobe, and framing.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M02, `public/video/hero-simpul.mp4`
+
+| | |
+| --- | --- |
+| Tipe | video |
+| Rasio | 16:9 |
+| Resep foto | H1 |
+| Dipakai di | Home page hero background. MANDATORY, R30 and R44. |
+| Model | `veo-3.1-lite-generate-preview` |
+| Durasi | 8 detik |
+| Resolusi | 720p |
+| Playback | muted, autoplay, loop, playsinline |
+
+```
+SUBJECT: An eight second editorial fashion clip in a dark, moody daylight studio. A single large window camera left is the only light, the room falls off into deep charcoal and indigo shadow. Slow push in on a young Indonesian woman in a soft neutral voal hijab, seen from the chest up at a three quarter angle. She turns her head slowly toward the light, and the scarf drapes and settles across her shoulder with real weight, the folds shifting naturally as she moves. In the last two seconds the camera drifts down slightly to follow the fabric falling. Shot on an 85mm prime at f/2.0, shallow depth of field, gentle handheld drift, no cuts, no zoom snaps. Muted desaturated warm neutral grade with deep shadows, subtle film grain, calm and quiet mood. The fabric weave stays visible in the highlights.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+
+no fast cuts, no whip pans, no speed ramps, no text overlay, no logo, no lens flare, no stuttering or morphing between frames, no fabric that stretches or melts as it moves.
+```
+
+### M03, `public/img/categories/pashmina.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:3 |
+| Resep foto | S4 |
+| Dipakai di | Home page category strip, and the header of /katalog/pashmina/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Five voal and ceruty pashmina hijabs folded into neat squares and stacked slightly offset on a warm off white surface, in the colourways Krem Susu a warm milky cream, Biru Senja a muted dusty blue, Zaitun a soft olive green, Mocha a mid warm brown, and Kabut a pale warm grey, photographed at a low three quarter angle so the folded edges and the weave of each layer are visible. Soft window light from the left, one gentle shadow to the right of the stack.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M04, `public/img/categories/segi-empat.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:3 |
+| Resep foto | S4 |
+| Dipakai di | Home page category strip, and the header of /katalog/segi-empat/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Five square segi empat hijabs folded into neat squares and stacked slightly offset on a warm off white surface, in the colourways Putih Tulang a warm bone white, Hitam Pekat a deep neutral black, Biru Tinta a deep indigo ink blue, Champagne a pale warm gold beige, and Sulur Pagi a pale oat ground with a small tonal vine print, photographed at a low three quarter angle so the folded edges and the differing surfaces of voal, polycotton, and satin are all visible in one stack. Soft window light from the left.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M05, `public/img/categories/bergo-instan.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:3 |
+| Resep foto | S4 |
+| Dipakai di | Home page category strip, and the header of /katalog/bergo-instan/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Four slip on bergo hijabs arranged in a loose row on a warm off white surface, in the colourways Hitam Pekat a deep neutral black, Mocha a mid warm brown, Krem Susu a warm milky cream, and Zaitun a soft olive green. Each holds its own rounded crown shape rather than lying flat, so the difference between a plain jersey bergo and one with a stiffened inner brim is visible. Photographed at a low three quarter angle, soft window light from the left.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M06, `public/img/categories/sport.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:3 |
+| Resep foto | S4 |
+| Dipakai di | Home page category strip, and the header of /katalog/sport/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Three quick dry sport hijabs folded and stacked slightly offset on a warm off white surface, in the colourways Hitam Pekat a deep neutral black, Biru Senja a muted dusty blue, and Sage a greyed green, with one unfolded beside the stack so the flatlock seam and the thin soft gripper band at the inner edge are both visible. Photographed at a low three quarter angle, soft window light from the left.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M07, `public/img/categories/inner-ciput.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:3 |
+| Resep foto | S4 |
+| Dipakai di | Home page category strip, and the header of /katalog/inner-ciput/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Four ninja style jersey inner caps laid in a loose row on a warm off white surface, in the colourways Hitam Pekat a deep neutral black, Krem Susu a warm milky cream, Abu Kabut a neutral mid grey, and Mocha a mid warm brown, each holding a soft rounded shape with the back elastic band visible on one of them. Photographed slightly from above at a three quarter angle, soft window light from the left.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M08, `public/img/categories/aksesoris.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:3 |
+| Resep foto | S4 |
+| Dipakai di | Home page category strip, and the header of /katalog/aksesoris/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A flat lay of hijab accessories on a warm off white surface, six small magnetic pins in antique brass, brushed silver, and matte black arranged loosely beside a folded natural cream canvas drawstring pouch, with one pin resting on a corner of pale voal cloth to show how it pinches the fabric. No branding and no lettering on any object. Photographed from a high three quarter angle, soft window light from the left.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M09, `public/img/products/pashmina-alun-voal-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Pashmina Alun Voal everywhere it appears, plus gallery frame 1 on /produk/pashmina-alun-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a voal premium ultrafine pashmina hijab in the colourway Krem Susu, a warm milky cream, 175x75 cm, finished with a fine rolled jahit tepi stitch. A fine matte nap with a visible close weave is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. The rolled hem stitch is the hero detail on this model, it should be readable as individual stitches at close range.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M10, `public/img/products/pashmina-alun-voal-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/pashmina-alun-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A voal premium ultrafine pashmina hijab in the colourway Biru Senja, a muted dusty blue folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a fine rolled jahit tepi stitch and a small unbranded brass plate. A fine matte nap with a visible close weave is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. The rolled hem stitch is the hero detail on this model, it should be readable as individual stitches at close range.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M11, `public/img/products/pashmina-alun-voal-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/pashmina-alun-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A voal premium ultrafine pashmina hijab in the colourway Zaitun, a soft olive green hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A fine matte nap with a visible close weave and a fine rolled jahit tepi stitch are both readable. Nothing else in the frame, no props and no people. The rolled hem stitch is the hero detail on this model, it should be readable as individual stitches at close range.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M12, `public/img/products/pashmina-alun-voal-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/pashmina-alun-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a voal premium ultrafine pashmina hijab in the colourway Krem Susu, a warm milky cream, showing a fine rolled jahit tepi stitch and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a fine matte nap with a visible close weave reads clearly, shot at a shallow angle so depth falls off across the corner. The rolled hem stitch is the hero detail on this model, it should be readable as individual stitches at close range.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M13, `public/img/products/pashmina-alun-ceruty-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Pashmina Alun Ceruty Babydoll everywhere it appears, plus gallery frame 1 on /produk/pashmina-alun-ceruty/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a ceruty babydoll premium pashmina hijab in the colourway Kabut, a pale warm grey, 180x75 cm, finished with a fine rolled jahit tepi stitch. A soft crepe surface with a fine irregular pebble texture is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. This is the lightest cloth in the range, so the folds must read as noticeably softer and more numerous than on a heavier fabric.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M14, `public/img/products/pashmina-alun-ceruty-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/pashmina-alun-ceruty/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A ceruty babydoll premium pashmina hijab in the colourway Mocha, a mid warm brown folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a fine rolled jahit tepi stitch and a small unbranded brass plate. A soft crepe surface with a fine irregular pebble texture is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. This is the lightest cloth in the range, so the folds must read as noticeably softer and more numerous than on a heavier fabric.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M15, `public/img/products/pashmina-alun-ceruty-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/pashmina-alun-ceruty/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A ceruty babydoll premium pashmina hijab in the colourway Hitam Pekat, a deep neutral black hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A soft crepe surface with a fine irregular pebble texture and a fine rolled jahit tepi stitch are both readable. Nothing else in the frame, no props and no people. This is the lightest cloth in the range, so the folds must read as noticeably softer and more numerous than on a heavier fabric.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M16, `public/img/products/pashmina-alun-ceruty-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/pashmina-alun-ceruty/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a ceruty babydoll premium pashmina hijab in the colourway Kabut, a pale warm grey, showing a fine rolled jahit tepi stitch and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a soft crepe surface with a fine irregular pebble texture reads clearly, shot at a shallow angle so depth falls off across the corner. This is the lightest cloth in the range, so the folds must read as noticeably softer and more numerous than on a heavier fabric.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M17, `public/img/products/pashmina-bilah-diamond-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Pashmina Bilah Diamond Crepe everywhere it appears, plus gallery frame 1 on /produk/pashmina-bilah-diamond/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a diamond crepe pashmina hijab in the colourway Taro, a muted mauve lilac, 175x75 cm, finished with a fine rolled jahit tepi stitch. A pronounced orange peel texture across the whole surface is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. This cloth has more body than the others, so the folds must hold their shape and stand rather than collapse.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M18, `public/img/products/pashmina-bilah-diamond-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/pashmina-bilah-diamond/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A diamond crepe pashmina hijab in the colourway Marun Tua, a deep maroon folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a fine rolled jahit tepi stitch and a small unbranded brass plate. A pronounced orange peel texture across the whole surface is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. This cloth has more body than the others, so the folds must hold their shape and stand rather than collapse.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M19, `public/img/products/pashmina-bilah-diamond-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/pashmina-bilah-diamond/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A diamond crepe pashmina hijab in the colourway Putih Tulang, a warm bone white hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A pronounced orange peel texture across the whole surface and a fine rolled jahit tepi stitch are both readable. Nothing else in the frame, no props and no people. This cloth has more body than the others, so the folds must hold their shape and stand rather than collapse.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M20, `public/img/products/pashmina-bilah-diamond-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/pashmina-bilah-diamond/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a diamond crepe pashmina hijab in the colourway Taro, a muted mauve lilac, showing a fine rolled jahit tepi stitch and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a pronounced orange peel texture across the whole surface reads clearly, shot at a shallow angle so depth falls off across the corner. This cloth has more body than the others, so the folds must hold their shape and stand rather than collapse.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M21, `public/img/products/pashmina-sanding-viscose-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Pashmina Sanding Viscose everywhere it appears, plus gallery frame 1 on /produk/pashmina-sanding-viscose/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a premium viscose pashmina hijab in the colourway Terakota, a muted terracotta clay, 180x75 cm, finished with a clean sealed laser cut edge with no stitching. A slight satin like sheen with a heavier fall is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. A small unbranded brass plate is stitched at one corner, and the laser cut edge must read as sealed with no thread at all.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M22, `public/img/products/pashmina-sanding-viscose-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/pashmina-sanding-viscose/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A premium viscose pashmina hijab in the colourway Sage, a greyed green folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a clean sealed laser cut edge with no stitching and a small unbranded brass plate. A slight satin like sheen with a heavier fall is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. A small unbranded brass plate is stitched at one corner, and the laser cut edge must read as sealed with no thread at all.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M23, `public/img/products/pashmina-sanding-viscose-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/pashmina-sanding-viscose/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A premium viscose pashmina hijab in the colourway Abu Kabut, a neutral mid grey hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A slight satin like sheen with a heavier fall and a clean sealed laser cut edge with no stitching are both readable. Nothing else in the frame, no props and no people. A small unbranded brass plate is stitched at one corner, and the laser cut edge must read as sealed with no thread at all.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M24, `public/img/products/pashmina-sanding-viscose-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/pashmina-sanding-viscose/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a premium viscose pashmina hijab in the colourway Terakota, a muted terracotta clay, showing a clean sealed laser cut edge with no stitching and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a slight satin like sheen with a heavier fall reads clearly, shot at a shallow angle so depth falls off across the corner. A small unbranded brass plate is stitched at one corner, and the laser cut edge must read as sealed with no thread at all.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M25, `public/img/products/segi-empat-titik-voal-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Segi Empat Titik Voal everywhere it appears, plus gallery frame 1 on /produk/segi-empat-titik-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a voal premium square segi empat hijab in the colourway Putih Tulang, a warm bone white, 115x115 cm, finished with a fine rolled jahit tepi stitch. A fine matte nap with a visible close weave is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. This is the larger 115 cm square, so when worn the front layer must clearly cover the chest without a second layer.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M26, `public/img/products/segi-empat-titik-voal-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/segi-empat-titik-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A voal premium square segi empat hijab in the colourway Biru Senja, a muted dusty blue folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a fine rolled jahit tepi stitch and a small unbranded brass plate. A fine matte nap with a visible close weave is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. This is the larger 115 cm square, so when worn the front layer must clearly cover the chest without a second layer.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M27, `public/img/products/segi-empat-titik-voal-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/segi-empat-titik-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A voal premium square segi empat hijab in the colourway Zaitun, a soft olive green hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A fine matte nap with a visible close weave and a fine rolled jahit tepi stitch are both readable. Nothing else in the frame, no props and no people. This is the larger 115 cm square, so when worn the front layer must clearly cover the chest without a second layer.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M28, `public/img/products/segi-empat-titik-voal-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/segi-empat-titik-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a voal premium square segi empat hijab in the colourway Putih Tulang, a warm bone white, showing a fine rolled jahit tepi stitch and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a fine matte nap with a visible close weave reads clearly, shot at a shallow angle so depth falls off across the corner. This is the larger 115 cm square, so when worn the front layer must clearly cover the chest without a second layer.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M29, `public/img/products/segi-empat-kanvas-polycotton-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Segi Empat Kanvas Polycotton everywhere it appears, plus gallery frame 1 on /produk/segi-empat-kanvas-polycotton/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a polycotton square segi empat hijab in the colourway Hitam Pekat, a deep neutral black, 110x110 cm, finished with a plain jahit tepi stitch. A slightly crisp matte weave with a visible plain grain is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. This is the stiffest cloth in the range. Folds break with a slightly sharper crease than the voal models do.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M30, `public/img/products/segi-empat-kanvas-polycotton-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/segi-empat-kanvas-polycotton/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A polycotton square segi empat hijab in the colourway Krem Susu, a warm milky cream folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a plain jahit tepi stitch and a small unbranded brass plate. A slightly crisp matte weave with a visible plain grain is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. This is the stiffest cloth in the range. Folds break with a slightly sharper crease than the voal models do.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M31, `public/img/products/segi-empat-kanvas-polycotton-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/segi-empat-kanvas-polycotton/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A polycotton square segi empat hijab in the colourway Biru Tinta, a deep indigo ink blue hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A slightly crisp matte weave with a visible plain grain and a plain jahit tepi stitch are both readable. Nothing else in the frame, no props and no people. This is the stiffest cloth in the range. Folds break with a slightly sharper crease than the voal models do.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M32, `public/img/products/segi-empat-kanvas-polycotton-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/segi-empat-kanvas-polycotton/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a polycotton square segi empat hijab in the colourway Hitam Pekat, a deep neutral black, showing a plain jahit tepi stitch and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a slightly crisp matte weave with a visible plain grain reads clearly, shot at a shallow angle so depth falls off across the corner. This is the stiffest cloth in the range. Folds break with a slightly sharper crease than the voal models do.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M33, `public/img/products/segi-empat-sulur-voal-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Segi Empat Sulur Voal Motif everywhere it appears, plus gallery frame 1 on /produk/segi-empat-sulur-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a printed voal premium square segi empat hijab in the colourway Sulur Pagi, a pale oat ground with a soft tonal vine print, 115x115 cm, finished with a fine rolled jahit tepi stitch. A fine matte nap carrying a small scale hand drawn vine motif is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. The vine motif is deliberately small in scale and low in contrast, an abstract botanical line, never a large floral and never any lettering.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M34, `public/img/products/segi-empat-sulur-voal-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/segi-empat-sulur-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A printed voal premium square segi empat hijab in the colourway Sulur Senja, a dusty mauve ground with a soft tonal vine print folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a fine rolled jahit tepi stitch and a small unbranded brass plate. A fine matte nap carrying a small scale hand drawn vine motif is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. The vine motif is deliberately small in scale and low in contrast, an abstract botanical line, never a large floral and never any lettering.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M35, `public/img/products/segi-empat-sulur-voal-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/segi-empat-sulur-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A printed voal premium square segi empat hijab in the colourway Sulur Kabut, a cool pale grey ground with a soft tonal vine print hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A fine matte nap carrying a small scale hand drawn vine motif and a fine rolled jahit tepi stitch are both readable. Nothing else in the frame, no props and no people. The vine motif is deliberately small in scale and low in contrast, an abstract botanical line, never a large floral and never any lettering.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M36, `public/img/products/segi-empat-sulur-voal-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/segi-empat-sulur-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a printed voal premium square segi empat hijab in the colourway Sulur Pagi, a pale oat ground with a soft tonal vine print, showing a fine rolled jahit tepi stitch and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a fine matte nap carrying a small scale hand drawn vine motif reads clearly, shot at a shallow angle so depth falls off across the corner. The vine motif is deliberately small in scale and low in contrast, an abstract botanical line, never a large floral and never any lettering.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M37, `public/img/products/segi-empat-satin-lembayung-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Segi Empat Satin Lembayung everywhere it appears, plus gallery frame 1 on /produk/segi-empat-satin-lembayung/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a premium satin silk square segi empat hijab in the colourway Champagne, a pale warm gold beige, 110x110 cm, finished with a fine rolled jahit tepi stitch. A low soft lustre that catches light gradually along a fold, never a hard specular flare is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. The lustre must stay restrained. A blown out highlight or a mirror bright reflection means the frame is wrong.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M38, `public/img/products/segi-empat-satin-lembayung-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/segi-empat-satin-lembayung/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A premium satin silk square segi empat hijab in the colourway Marun Tua, a deep maroon folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a fine rolled jahit tepi stitch and a small unbranded brass plate. A low soft lustre that catches light gradually along a fold, never a hard specular flare is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. The lustre must stay restrained. A blown out highlight or a mirror bright reflection means the frame is wrong.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M39, `public/img/products/segi-empat-satin-lembayung-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/segi-empat-satin-lembayung/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A premium satin silk square segi empat hijab in the colourway Biru Tinta, a deep indigo ink blue hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A low soft lustre that catches light gradually along a fold, never a hard specular flare and a fine rolled jahit tepi stitch are both readable. Nothing else in the frame, no props and no people. The lustre must stay restrained. A blown out highlight or a mirror bright reflection means the frame is wrong.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M40, `public/img/products/segi-empat-satin-lembayung-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/segi-empat-satin-lembayung/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a premium satin silk square segi empat hijab in the colourway Champagne, a pale warm gold beige, showing a fine rolled jahit tepi stitch and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a low soft lustre that catches light gradually along a fold, never a hard specular flare reads clearly, shot at a shallow angle so depth falls off across the corner. The lustre must stay restrained. A blown out highlight or a mirror bright reflection means the frame is wrong.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M41, `public/img/products/bergo-rapi-jersey-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Bergo Rapi Jersey everywhere it appears, plus gallery frame 1 on /produk/bergo-rapi-jersey/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a cotton spandex jersey slip on bergo hijab with no pins in the colourway Hitam Pekat, a deep neutral black, size M, finished with a flat overlocked seam running down the back. A visible fine knit with a soft matte face is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. This is a shaped slip on garment, not a flat scarf. It holds a smooth rounded crown with no pins and no visible head shape beneath it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M42, `public/img/products/bergo-rapi-jersey-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/bergo-rapi-jersey/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A cotton spandex jersey slip on bergo hijab with no pins in the colourway Mocha, a mid warm brown folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a flat overlocked seam running down the back and a small unbranded brass plate. A visible fine knit with a soft matte face is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. This is a shaped slip on garment, not a flat scarf. It holds a smooth rounded crown with no pins and no visible head shape beneath it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M43, `public/img/products/bergo-rapi-jersey-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/bergo-rapi-jersey/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A cotton spandex jersey slip on bergo hijab with no pins in the colourway Kabut, a pale warm grey hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A visible fine knit with a soft matte face and a flat overlocked seam running down the back are both readable. Nothing else in the frame, no props and no people. This is a shaped slip on garment, not a flat scarf. It holds a smooth rounded crown with no pins and no visible head shape beneath it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M44, `public/img/products/bergo-rapi-jersey-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/bergo-rapi-jersey/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a cotton spandex jersey slip on bergo hijab with no pins in the colourway Hitam Pekat, a deep neutral black, showing a flat overlocked seam running down the back and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a visible fine knit with a soft matte face reads clearly, shot at a shallow angle so depth falls off across the corner. This is a shaped slip on garment, not a flat scarf. It holds a smooth rounded crown with no pins and no visible head shape beneath it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M45, `public/img/products/bergo-kerja-instan-voal-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Bergo Kerja Instan Voal everywhere it appears, plus gallery frame 1 on /produk/bergo-kerja-instan-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a voal premium built over an inner pet antem brim instant bergo hijab with a built in brim in the colourway Krem Susu, a warm milky cream, all size, finished with a fine rolled jahit tepi stitch. A fine matte nap with a visible close weave is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. A stiffened inner brim holds the front edge upright and slightly forward, which is the single feature that distinguishes this from a plain bergo.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M46, `public/img/products/bergo-kerja-instan-voal-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/bergo-kerja-instan-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A voal premium built over an inner pet antem brim instant bergo hijab with a built in brim in the colourway Zaitun, a soft olive green folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a fine rolled jahit tepi stitch and a small unbranded brass plate. A fine matte nap with a visible close weave is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. A stiffened inner brim holds the front edge upright and slightly forward, which is the single feature that distinguishes this from a plain bergo.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M47, `public/img/products/bergo-kerja-instan-voal-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/bergo-kerja-instan-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A voal premium built over an inner pet antem brim instant bergo hijab with a built in brim in the colourway Biru Tinta, a deep indigo ink blue hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A fine matte nap with a visible close weave and a fine rolled jahit tepi stitch are both readable. Nothing else in the frame, no props and no people. A stiffened inner brim holds the front edge upright and slightly forward, which is the single feature that distinguishes this from a plain bergo.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M48, `public/img/products/bergo-kerja-instan-voal-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/bergo-kerja-instan-voal/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a voal premium built over an inner pet antem brim instant bergo hijab with a built in brim in the colourway Krem Susu, a warm milky cream, showing a fine rolled jahit tepi stitch and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a fine matte nap with a visible close weave reads clearly, shot at a shallow angle so depth falls off across the corner. A stiffened inner brim holds the front edge upright and slightly forward, which is the single feature that distinguishes this from a plain bergo.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M49, `public/img/products/sport-hijab-laju-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Sport Hijab Laju everywhere it appears, plus gallery frame 1 on /produk/sport-hijab-laju/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a quick dry technical knit sport hijab in the colourway Hitam Pekat, a deep neutral black, size M, finished with flatlock seams and a soft silicone gripper band at the inner edge. A fine performance knit with a slight dry matte hand is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. The flatlock seam and the thin inner gripper band are the proof points and should be findable in the frame.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M50, `public/img/products/sport-hijab-laju-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/sport-hijab-laju/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A quick dry technical knit sport hijab in the colourway Biru Senja, a muted dusty blue folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal flatlock seams and a soft silicone gripper band at the inner edge and a small unbranded brass plate. A fine performance knit with a slight dry matte hand is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. The flatlock seam and the thin inner gripper band are the proof points and should be findable in the frame.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M51, `public/img/products/sport-hijab-laju-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/sport-hijab-laju/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A quick dry technical knit sport hijab in the colourway Sage, a greyed green hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A fine performance knit with a slight dry matte hand and flatlock seams and a soft silicone gripper band at the inner edge are both readable. Nothing else in the frame, no props and no people. The flatlock seam and the thin inner gripper band are the proof points and should be findable in the frame.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M52, `public/img/products/sport-hijab-laju-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/sport-hijab-laju/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a quick dry technical knit sport hijab in the colourway Hitam Pekat, a deep neutral black, showing flatlock seams and a soft silicone gripper band at the inner edge and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a fine performance knit with a slight dry matte hand reads clearly, shot at a shallow angle so depth falls off across the corner. The flatlock seam and the thin inner gripper band are the proof points and should be findable in the frame.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M53, `public/img/products/inner-ninja-antem-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Inner Ninja Antem everywhere it appears, plus gallery frame 1 on /produk/inner-ninja-antem/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a soft jersey ninja style inner cap worn under a hijab in the colourway Hitam Pekat, a deep neutral black, all size, finished with a soft elastic band across the back. A fine smooth knit is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. This is the under layer, a close fitting cap that covers the hair and the neck. It is plain and functional, never styled as an outer garment.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M54, `public/img/products/inner-ninja-antem-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/inner-ninja-antem/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A soft jersey ninja style inner cap worn under a hijab in the colourway Krem Susu, a warm milky cream folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a soft elastic band across the back and a small unbranded brass plate. A fine smooth knit is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. This is the under layer, a close fitting cap that covers the hair and the neck. It is plain and functional, never styled as an outer garment.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M55, `public/img/products/inner-ninja-antem-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/inner-ninja-antem/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A soft jersey ninja style inner cap worn under a hijab in the colourway Abu Kabut, a neutral mid grey hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A fine smooth knit and a soft elastic band across the back are both readable. Nothing else in the frame, no props and no people. This is the under layer, a close fitting cap that covers the hair and the neck. It is plain and functional, never styled as an outer garment.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M56, `public/img/products/inner-ninja-antem-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/inner-ninja-antem/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a soft jersey ninja style inner cap worn under a hijab in the colourway Hitam Pekat, a deep neutral black, showing a soft elastic band across the back and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a fine smooth knit reads clearly, shot at a shallow angle so depth falls off across the corner. This is the under layer, a close fitting cap that covers the hair and the neck. It is plain and functional, never styled as an outer garment.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M57, `public/img/products/set-jarum-magnet-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Set Jarum Magnet Simpul everywhere it appears, plus gallery frame 1 on /produk/set-jarum-magnet/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a metal finished magnetic hijab pins set of six magnetic hijab pins in the colourway Kuningan, an antique brass, about 12 mm across, finished with a smooth rolled rim with no sharp edge. A brushed metal finish, matte rather than mirror is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. Six small discs, no branding and no lettering on any face. When shown on cloth they sit flat and pinch the fabric without piercing it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M58, `public/img/products/set-jarum-magnet-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/set-jarum-magnet/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A metal finished magnetic hijab pins set of six magnetic hijab pins in the colourway Perak, a brushed silver folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a smooth rolled rim with no sharp edge and a small unbranded brass plate. A brushed metal finish, matte rather than mirror is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. Six small discs, no branding and no lettering on any face. When shown on cloth they sit flat and pinch the fabric without piercing it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M59, `public/img/products/set-jarum-magnet-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/set-jarum-magnet/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A metal finished magnetic hijab pins set of six magnetic hijab pins in the colourway Hitam Doff, a matte black hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A brushed metal finish, matte rather than mirror and a smooth rolled rim with no sharp edge are both readable. Nothing else in the frame, no props and no people. Six small discs, no branding and no lettering on any face. When shown on cloth they sit flat and pinch the fabric without piercing it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M60, `public/img/products/set-jarum-magnet-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/set-jarum-magnet/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a metal finished magnetic hijab pins set of six magnetic hijab pins in the colourway Kuningan, an antique brass, showing a smooth rolled rim with no sharp edge and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a brushed metal finish, matte rather than mirror reads clearly, shot at a shallow angle so depth falls off across the corner. Six small discs, no branding and no lettering on any face. When shown on cloth they sit flat and pinch the fabric without piercing it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M61, `public/img/products/pouch-kanvas-1.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:5 |
+| Resep foto | S1 |
+| Dipakai di | Card image for Pouch Simpul Kanvas everywhere it appears, plus gallery frame 1 on /produk/pouch-kanvas/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman photographed from the chest up at a three quarter angle, wearing a cotton canvas drawstring storage pouch for folded hijabs in the colourway Krem, a natural undyed cream, 24x30 cm, finished with a double stitched drawstring channel with a cotton cord. A visible plain canvas weave with a slightly slubby grain is visible where the cloth catches the light. The scarf is wrapped in a simple everyday style and draped over one shoulder, and the fabric falls with visible weight. Plain warm off white plaster wall behind her. She looks slightly off camera with a calm expression, hands out of frame. Hair, neck, and ears fully covered, the hijab sitting at the hairline. The bag stands up on its own because the canvas has body. No printed logo and no lettering anywhere on it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M62, `public/img/products/pouch-kanvas-2.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S2 |
+| Dipakai di | Gallery frame 2 on /produk/pouch-kanvas/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A cotton canvas drawstring storage pouch for folded hijabs in the colourway Zaitun, a soft olive green folded into a neat rectangle and laid flat on a warm off white paper surface, photographed from directly above. One corner is folded back to reveal a double stitched drawstring channel with a cotton cord and a small unbranded brass plate. A visible plain canvas weave with a slightly slubby grain is clearly visible across the surface, with two soft pressed creases left from the packaging fold. Raking window light from the left casts a low soft shadow along the folded edges. The bag stands up on its own because the canvas has body. No printed logo and no lettering anywhere on it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M63, `public/img/products/pouch-kanvas-3.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:4 |
+| Resep foto | S3 |
+| Dipakai di | Gallery frame 3 on /produk/pouch-kanvas/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A cotton canvas drawstring storage pouch for folded hijabs in the colourway Hitam Pekat, a deep neutral black hanging from a plain wooden rail against a soft sand coloured wall, falling in long irregular vertical folds under its own weight. The lower hem drifts very slightly. A visible plain canvas weave with a slightly slubby grain and a double stitched drawstring channel with a cotton cord are both readable. Nothing else in the frame, no props and no people. The bag stands up on its own because the canvas has body. No printed logo and no lettering anywhere on it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M64, `public/img/products/pouch-kanvas-4.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 1:1 |
+| Resep foto | S5 |
+| Dipakai di | Gallery frame 4 on /produk/pouch-kanvas/ |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Extreme close up of the corner of a cotton canvas drawstring storage pouch for folded hijabs in the colourway Krem, a natural undyed cream, showing a double stitched drawstring channel with a cotton cord and a small unbranded brass plate stitched at the corner, the fabric weave filling the frame so a visible plain canvas weave with a slightly slubby grain reads clearly, shot at a shallow angle so depth falls off across the corner. The bag stands up on its own because the canvas has body. No printed logo and no lettering anywhere on it.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M65, `public/img/articles/cara-pakai-pashmina-kantor.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 16:9 |
+| Resep foto | S7 |
+| Dipakai di | Cover for /artikel/cara-pakai-pashmina-simpel-ke-kantor/, and its card in the article index |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman standing at a plain wall mirror in a bright simple bedroom in the early morning, mid action and unposed, lifting one side of a cream voal pashmina across her shoulder as she shapes it, one hand clearly visible against the cloth with fingers separated and countable. Warm neutral colour, generous negative space on the left for a headline overlay.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M66, `public/img/articles/beda-voal-ceruty-diamond.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 16:9 |
+| Resep foto | S7 |
+| Dipakai di | Cover for /artikel/beda-voal-ceruty-diamond-crepe/, and its card in the article index |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Three different hijab fabrics laid side by side and slightly overlapping on a plain wooden table, a fine matte voal, a soft crepe ceruty babydoll, and a pronounced orange peel diamond crepe, all in closely related neutral tones so the eye reads the surface difference rather than a colour difference. Raking window light from the left makes each texture legible. No people in frame, generous negative space on the right for a headline overlay.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M67, `public/img/articles/panduan-warna-hijab-2026.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 16:9 |
+| Resep foto | S7 |
+| Dipakai di | Cover for /artikel/panduan-warna-hijab-2026/, and its card in the article index |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A loose fan of folded hijabs spread across a warm off white surface in the 2026 neutral palette, olive, mocha, warm beige, and a muted dusty blue, overlapping so several colours are visible at once and the weave of each is readable. Photographed from slightly above at a three quarter angle, soft window light from the left, no people in frame, generous negative space on the right for a headline overlay.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M68, `public/img/articles/rahasia-hijab-tidak-letoy.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 16:9 |
+| Resep foto | S7 |
+| Dipakai di | Cover for /artikel/rahasia-hijab-tidak-mudah-letoy/, and its card in the article index |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A pale hijab being hand washed in a shallow basin of cold water on a plain surface beside a window, two hands resting in the water with fingers separated and countable, a small bottle of clear liquid detergent turned away from camera so no text is legible. Soft daylight from the left, warm neutral colour, generous negative space on the left for a headline overlay.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M69, `public/img/articles/segi-empat-110-atau-115.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 16:9 |
+| Resep foto | S7 |
+| Dipakai di | Cover for /artikel/segi-empat-110-atau-115/, and its card in the article index |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: Two square hijabs of visibly different sizes laid flat and slightly overlapping on a warm off white floor, photographed from directly above, one clearly larger than the other so the size difference is the subject of the frame, both in closely related neutral tones with the hem stitch readable along the edges. No people in frame, generous negative space on the right for a headline overlay.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M70, `public/img/articles/sport-hijab-bukan-jersey-biasa.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 16:9 |
+| Resep foto | S7 |
+| Dipakai di | Cover for /artikel/sport-hijab-bukan-jersey-biasa/, and its card in the article index |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman mid warm up in a bright plain room with a wooden floor, wearing a dark quick dry sport hijab and plain neutral activewear, caught unposed at the top of a stretch so the hijab stays close to her head and does not shift. Warm neutral colour, soft daylight from a large window on the left, generous negative space on the left for a headline overlay.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M71, `public/img/about/atelier-simpul.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:2 |
+| Resep foto | S8 |
+| Dipakai di | About page, brand story section |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A quiet small textile studio interior, bolts of neutral voal and ceruty fabric standing on a plain wooden table, a folded stack of finished hijabs beside them, a pair of fabric shears resting on the wood, soft daylight from a large window on the left. No people in frame, no signage and no lettering anywhere.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M72, `public/img/packaging/simpul-unboxing.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 4:3 |
+| Resep foto | S6 |
+| Dipakai di | Product detail page, packaging section |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: An open flat ivory doff carton box 20x20x3 cm on a warm off white surface, a folded voal hijab in a warm milky cream resting inside on tissue paper, a corded card hangtag turned away from camera so no text is legible, and a cream drawstring fabric pouch beside the box. A small brass plate is visible at one corner of the folded scarf. Shot from a high three quarter angle, soft window light from the left. Never a bottle, jar, jerry can, tube, or sachet.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M73, `public/img/lookbook/lookbook-pagi.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:2 |
+| Resep foto | S1 wide |
+| Dipakai di | Home page, lookbook section |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman standing three quarters to camera in a bright room with a warm off white plaster wall, wearing an olive green voal pashmina shaped in a simple everyday wrap over plain oat coloured clothing, the long end falling across one shoulder with clear weight. She looks off camera, calm expression, hands out of frame. Morning window light from the left with a readable soft shadow along every fold.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+
+### M74, `public/img/lookbook/lookbook-sore.jpg`
+
+| | |
+| --- | --- |
+| Tipe | image |
+| Rasio | 3:2 |
+| Resep foto | S1 wide |
+| Dipakai di | About page, closing section |
+| Model | `gemini-3.1-flash-image`, 1K, `useSearchGrounding: true` |
+
+```
+SUBJECT: A young Indonesian woman seated on a plain wooden stool against a warm plaster wall, wearing a warm milky cream square segi empat hijab folded to a triangle over plain charcoal clothing, the front layer falling to cover the chest. Late afternoon window light from the left, longer softer shadows than a morning frame, calm unposed expression, one hand resting simply in her lap with fingers separated and countable.
+
+PHOTO DNA:
+Editorial fashion photograph, shot on a Canon EOS R5 with an 85mm f/1.4 prime lens at f/2.2,
+ISO 200, 1/250s, handheld at eye level. Lit by one large north facing window as the only light
+source, positioned camera left, with a single white bounce card camera right. Soft directional
+light with a clear falloff across the frame, one readable soft shadow edge under the jaw and
+along every fabric fold, gentle highlight roll off on the cloth, no frontal flash, no ring
+light, no studio strobe. Real skin with visible pores, fine peach fuzz, natural texture and a
+few honest imperfections, unretouched, matte not shiny. The textile is rendered as genuine woven
+cloth: the weave grain is visible at close range, voal shows a fine matte nap, ceruty shows a
+soft crepe surface, diamond crepe shows its orange peel texture, and the hem stitch line is
+clearly readable along the edge. Fabric hangs with real weight and gravity, the drape follows
+the body and the folds are irregular, asymmetric and believable, with one or two soft creases
+left from being folded in the box. Shallow depth of field with natural optical falloff, the
+background is softly out of focus but still legible as a real room, no cut out edge, no halo.
+Muted true to life colour, a slightly desaturated warm neutral grade, subtle fine film grain
+throughout. The fabric colour must match its named colourway exactly. Composition is slightly
+off centre with generous breathing room, calm editorial mood, natural imperfect framing.
+
+NEGATIVE:
+no plastic or waxy skin, no airbrushed skin, no over smoothed skin, no beauty filter, no glossy
+magazine retouch, no over smoothed fabric, no fabric that looks like plastic or vinyl or liquid
+metal, no melted fabric, no warped fabric, no impossible fabric flow, no fabric defying gravity,
+no CGI look, no 3D render, no digital painting, no illustration, no hyper saturation, no HDR
+glow, no faux bokeh halo around the subject, no cut out edges, no sticker like subject
+separation, no floating objects, no extra fingers, no merged fingers, no malformed hands, no
+extra limbs, no distorted facial features, no uncanny eyes, no too perfect symmetry, no mirror
+perfect reflections, no warped logos, no melted logos, no garbled text, no fake or nonsense
+lettering on labels or tags, no watermark, no signature, no stock photo caption, no artificial
+studio smear, no heavy vignette, no neon colour cast, no unnatural colour grading, no visible
+AI artefacts, no duplicated pattern seams, no repeating tiled background.
+```
+

@@ -20,6 +20,9 @@ Portfolio demo build by [Himay Studio](https://himaystudio.com). Fictional brand
 | [`DESIGN.md`](./DESIGN.md) | Stage 1 | colour tokens with 33 certified WCAG pairs, typography, spacing, zero radius, hero and navbar decision |
 | [`ART-DIRECTION.md`](./ART-DIRECTION.md) | Stage 1 | the PHOTO DNA and NEGATIVE blocks every image prompt pastes verbatim, shot recipes, hero video prompt |
 | [`LOGO.md`](./LOGO.md) | Stage 1 | logo concept, ready to run mark prompt, knockout variant, favicon set |
+| [`LAYOUT-ARCHITECTURE.md`](./LAYOUT-ARCHITECTURE.md) | Stage 3 | the unique layout per surface with the reason attached, navbar and cart and shop mode decisions, page inventory, responsive contract |
+| [`MEDIA.md`](./MEDIA.md) | Stage 3 | the contract Stage 4 executes, 74 assets, one distinct prompt per asset. **Generated**, edit `scripts/media-assets.mjs` and re-run `npm run media` |
+| [`MEDIA-HOWTO.md`](./MEDIA-HOWTO.md) | Stage 3 | the human facing Google Flow tutorial, Bahasa Indonesia, with the per file checklist. **Generated** alongside `MEDIA.md` |
 
 ## Three decisions downstream stages must not quietly change
 
@@ -31,4 +34,26 @@ Portfolio demo build by [Himay Studio](https://himaystudio.com). Fictional brand
 
 ## Stack
 
-Next.js static export, TypeScript, deployed to Cloudflare Pages.
+Next.js 16 App Router with Tailwind v4, static export (`output: "export"`), deployed to
+Cloudflare Pages as `himaystudio-portfolio-simpul`.
+
+```bash
+npm install
+npm run dev           # local dev
+npm run build         # static export into out/
+npm run media         # regenerate MEDIA.md and MEDIA-HOWTO.md
+npm run media:check   # assert every declared asset is used, and vice versa
+```
+
+`npm run media:check` reads the built `out/` HTML and compares every `data-media` path in
+the markup against every path declared in `MEDIA.md`, in both directions. It is the guard
+against an asset being generated for a slot that no longer exists, or a slot pointing at a
+file nobody was ever asked to make.
+
+## Stage 3 status
+
+Layout first. All 43 routes are built and every media slot is an annotated placeholder
+carrying its own generation brief. **No `<video>` or `<img>` in this build points at a file
+that is not on disk** (R15), so nothing renders as a frozen dead element while the assets
+are outstanding. Stage 5 swaps the placeholders for real elements once Stage 4 has landed
+the 74 files at the exact paths `MEDIA.md` names.

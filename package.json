@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "media": "node scripts/gen-media.mjs",
+    "media:check": "node scripts/gen-media.mjs --check"
   },
   "dependencies": {
     "next": "^16.0.0",
