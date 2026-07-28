@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/gen-asset-manifest.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/gen-asset-manifest.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "assets": "node scripts/gen-asset-manifest.mjs",
     "media": "node scripts/gen-media.mjs",
     "media:check": "node scripts/gen-media.mjs --check"
   },

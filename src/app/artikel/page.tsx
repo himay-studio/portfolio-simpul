@@ -42,7 +42,8 @@ export default function ArtikelIndex() {
             </div>
           </Link>
 
-          <div className="grid cols-3 mt-7">
+          {/* R48: 8 peer items (rest, lead excluded), snap carousel at 768px */}
+          <div className="snap-row cols-3 mt-7">
             {rest.map((a) => (
               <Link key={a.slug} href={`/artikel/${a.slug}/`} className="card card-hover reveal">
                 <Media
@@ -65,6 +66,7 @@ export default function ArtikelIndex() {
               </Link>
             ))}
           </div>
+          <p className="snap-hint">Geser untuk melihat semua artikel.</p>
         </div>
       </section>
     </>
