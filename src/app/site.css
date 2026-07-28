@@ -1382,6 +1382,35 @@
   text-decoration: line-through;
 }
 
+/* ---------- article layout ----------
+   Main column plus a RIGHT sidebar, the pattern named in the brief. Below
+   1025px the sidebar drops BENEATH the body in the same order rather than
+   becoming a cramped second column at tablet width. */
+
+.article-layout {
+  display: grid;
+  gap: var(--s-8);
+  grid-template-columns: minmax(0, 1fr) 320px;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .article-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.article-aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  min-width: 0;
+}
+@media (min-width: 1025px) {
+  .article-aside {
+    position: sticky;
+    top: calc(var(--header-h) + var(--s-5));
+  }
+}
+
 /* ---------- accordion, R7 FAQ ---------- */
 
 .acc-item {
