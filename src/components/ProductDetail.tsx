@@ -6,6 +6,7 @@ import Media from "./Media";
 import { rupiah } from "@/lib/site";
 import { useCart } from "./cart/CartContext";
 import { waLink, waAnchorProps } from "@/lib/wa";
+import { ASSETS } from "@/lib/asset-manifest";
 import type { Product } from "@/data/products";
 
 /**
@@ -34,15 +35,33 @@ export default function ProductDetail({
   mediaIds: string[];
 }) {
   const { add } = useCart();
+
+  /**
+   * Live gallery, filtered to frames Stage 4 actually landed on disk. A
+   * missing frame (Media's own filesystem gate would otherwise render a
+   * placeholder thumbnail nobody can act on) is skipped entirely here, so
+   * R18 stays fully functional with however many real photos exist instead
+   * of mixing in dead thumbnails. Falls back to the full list only in the
+   * pathological case where every frame for this product is missing.
+   */
+  const live = product.gallery
+    .map((g, i) => ({ ...g, originalIndex: i, mediaId: mediaIds[i] }))
+    .filter((g) => ASSETS[g.path]);
+  const gallery = live.length > 0 ? live : product.gallery.map((g, i) => ({ ...g, originalIndex: i, mediaId: mediaIds[i] }));
+
   const [colour, setColour] = useState(product.colorways[0]);
-  const [frame, setFrame] = useState(0);
+  const [frame, setFrame] = useState(() => {
+    const idx = gallery.findIndex((g) => g.originalIndex === product.colorways[0].frame);
+    return idx === -1 ? 0 : idx;
+  });
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
 
   /** picking a colour swaps the visible frame in place, same page, same slug */
   const pickColour = (c: (typeof product.colorways)[number]) => {
     setColour(c);
-    setFrame(c.frame);
+    const idx = gallery.findIndex((g) => g.originalIndex === c.frame);
+    setFrame(idx === -1 ? 0 : idx);
   };
 
   const onAdd = () => {
@@ -56,14 +75,14 @@ export default function ProductDetail({
       {/* ---------------------------------------------------------- gallery */}
       <div className="gallery">
         <div className="gallery-main ratio-4-5" style={{ position: "relative" }}>
-          {product.gallery.map((g, i) => (
+          {gallery.map((g, i) => (
             <div
               key={g.path}
               className={`gallery-frame${i === frame ? " is-active" : ""}`}
               aria-hidden={i !== frame}
             >
               <Media
-                id={mediaIds[i]}
+                id={g.mediaId}
                 path={g.path}
                 ratio="4:5"
                 brief={g.alt + "."}
@@ -78,7 +97,7 @@ export default function ProductDetail({
           role="tablist"
           aria-label={`Galeri foto ${product.name}`}
         >
-          {product.gallery.map((g, i) => (
+          {gallery.map((g, i) => (
             <button
               key={g.path}
               type="button"
@@ -89,7 +108,7 @@ export default function ProductDetail({
               onClick={() => setFrame(i)}
             >
               <Media
-                id={mediaIds[i]}
+                id={g.mediaId}
                 path={g.path}
                 ratio="1:1"
                 brief={g.alt + "."}
