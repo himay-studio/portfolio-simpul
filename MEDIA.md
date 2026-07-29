@@ -51,86 +51,86 @@ pernah dikirim di Bersihara.
 
 | ID | Path | Tipe | Rasio | Resep | Dipakai di |
 | --- | --- | --- | --- | --- | --- |
-| `M01` | `public/img/hero-simpul-poster.jpg` | image | 16:9 | H1 still | Poster still for the hero video, and the closing CTA band on the home page |
-| `M02` | `public/video/hero-simpul.mp4` | video | 16:9 | H1 | Home page hero background. MANDATORY, R30 and R44. |
-| `M03` | `public/img/categories/pashmina.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/pashmina/ |
-| `M04` | `public/img/categories/segi-empat.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/segi-empat/ |
-| `M05` | `public/img/categories/bergo-instan.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/bergo-instan/ |
-| `M06` | `public/img/categories/sport.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/sport/ |
-| `M07` | `public/img/categories/inner-ciput.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/inner-ciput/ |
-| `M08` | `public/img/categories/aksesoris.jpg` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/aksesoris/ |
-| `M09` | `public/img/products/pashmina-alun-voal-1.jpg` | image | 4:5 | S1 | Card image for Pashmina Alun Voal everywhere it appears, plus gallery frame 1 on /produk/pashmina-alun-voal/ |
-| `M10` | `public/img/products/pashmina-alun-voal-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-alun-voal/ |
-| `M11` | `public/img/products/pashmina-alun-voal-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-alun-voal/ |
-| `M12` | `public/img/products/pashmina-alun-voal-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-alun-voal/ |
-| `M13` | `public/img/products/pashmina-alun-ceruty-1.jpg` | image | 4:5 | S1 | Card image for Pashmina Alun Ceruty Babydoll everywhere it appears, plus gallery frame 1 on /produk/pashmina-alun-ceruty/ |
-| `M14` | `public/img/products/pashmina-alun-ceruty-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-alun-ceruty/ |
-| `M15` | `public/img/products/pashmina-alun-ceruty-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-alun-ceruty/ |
-| `M16` | `public/img/products/pashmina-alun-ceruty-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-alun-ceruty/ |
-| `M17` | `public/img/products/pashmina-bilah-diamond-1.jpg` | image | 4:5 | S1 | Card image for Pashmina Bilah Diamond Crepe everywhere it appears, plus gallery frame 1 on /produk/pashmina-bilah-diamond/ |
-| `M18` | `public/img/products/pashmina-bilah-diamond-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-bilah-diamond/ |
-| `M19` | `public/img/products/pashmina-bilah-diamond-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-bilah-diamond/ |
-| `M20` | `public/img/products/pashmina-bilah-diamond-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-bilah-diamond/ |
-| `M21` | `public/img/products/pashmina-sanding-viscose-1.jpg` | image | 4:5 | S1 | Card image for Pashmina Sanding Viscose everywhere it appears, plus gallery frame 1 on /produk/pashmina-sanding-viscose/ |
-| `M22` | `public/img/products/pashmina-sanding-viscose-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-sanding-viscose/ |
-| `M23` | `public/img/products/pashmina-sanding-viscose-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-sanding-viscose/ |
-| `M24` | `public/img/products/pashmina-sanding-viscose-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-sanding-viscose/ |
-| `M25` | `public/img/products/segi-empat-titik-voal-1.jpg` | image | 4:5 | S1 | Card image for Segi Empat Titik Voal everywhere it appears, plus gallery frame 1 on /produk/segi-empat-titik-voal/ |
-| `M26` | `public/img/products/segi-empat-titik-voal-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-titik-voal/ |
-| `M27` | `public/img/products/segi-empat-titik-voal-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-titik-voal/ |
-| `M28` | `public/img/products/segi-empat-titik-voal-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-titik-voal/ |
-| `M29` | `public/img/products/segi-empat-kanvas-polycotton-1.jpg` | image | 4:5 | S1 | Card image for Segi Empat Kanvas Polycotton everywhere it appears, plus gallery frame 1 on /produk/segi-empat-kanvas-polycotton/ |
-| `M30` | `public/img/products/segi-empat-kanvas-polycotton-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-kanvas-polycotton/ |
-| `M31` | `public/img/products/segi-empat-kanvas-polycotton-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-kanvas-polycotton/ |
-| `M32` | `public/img/products/segi-empat-kanvas-polycotton-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-kanvas-polycotton/ |
-| `M33` | `public/img/products/segi-empat-sulur-voal-1.jpg` | image | 4:5 | S1 | Card image for Segi Empat Sulur Voal Motif everywhere it appears, plus gallery frame 1 on /produk/segi-empat-sulur-voal/ |
-| `M34` | `public/img/products/segi-empat-sulur-voal-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-sulur-voal/ |
-| `M35` | `public/img/products/segi-empat-sulur-voal-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-sulur-voal/ |
-| `M36` | `public/img/products/segi-empat-sulur-voal-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-sulur-voal/ |
-| `M37` | `public/img/products/segi-empat-satin-lembayung-1.jpg` | image | 4:5 | S1 | Card image for Segi Empat Satin Lembayung everywhere it appears, plus gallery frame 1 on /produk/segi-empat-satin-lembayung/ |
-| `M38` | `public/img/products/segi-empat-satin-lembayung-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-satin-lembayung/ |
-| `M39` | `public/img/products/segi-empat-satin-lembayung-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-satin-lembayung/ |
-| `M40` | `public/img/products/segi-empat-satin-lembayung-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-satin-lembayung/ |
-| `M41` | `public/img/products/bergo-rapi-jersey-1.jpg` | image | 4:5 | S1 | Card image for Bergo Rapi Jersey everywhere it appears, plus gallery frame 1 on /produk/bergo-rapi-jersey/ |
-| `M42` | `public/img/products/bergo-rapi-jersey-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/bergo-rapi-jersey/ |
-| `M43` | `public/img/products/bergo-rapi-jersey-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/bergo-rapi-jersey/ |
-| `M44` | `public/img/products/bergo-rapi-jersey-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/bergo-rapi-jersey/ |
-| `M45` | `public/img/products/bergo-kerja-instan-voal-1.jpg` | image | 4:5 | S1 | Card image for Bergo Kerja Instan Voal everywhere it appears, plus gallery frame 1 on /produk/bergo-kerja-instan-voal/ |
-| `M46` | `public/img/products/bergo-kerja-instan-voal-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/bergo-kerja-instan-voal/ |
-| `M47` | `public/img/products/bergo-kerja-instan-voal-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/bergo-kerja-instan-voal/ |
-| `M48` | `public/img/products/bergo-kerja-instan-voal-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/bergo-kerja-instan-voal/ |
-| `M49` | `public/img/products/sport-hijab-laju-1.jpg` | image | 4:5 | S1 | Card image for Sport Hijab Laju everywhere it appears, plus gallery frame 1 on /produk/sport-hijab-laju/ |
-| `M50` | `public/img/products/sport-hijab-laju-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/sport-hijab-laju/ |
-| `M51` | `public/img/products/sport-hijab-laju-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/sport-hijab-laju/ |
-| `M52` | `public/img/products/sport-hijab-laju-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/sport-hijab-laju/ |
-| `M53` | `public/img/products/inner-ninja-antem-1.jpg` | image | 4:5 | S1 | Card image for Inner Ninja Antem everywhere it appears, plus gallery frame 1 on /produk/inner-ninja-antem/ |
-| `M54` | `public/img/products/inner-ninja-antem-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/inner-ninja-antem/ |
-| `M55` | `public/img/products/inner-ninja-antem-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/inner-ninja-antem/ |
-| `M56` | `public/img/products/inner-ninja-antem-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/inner-ninja-antem/ |
-| `M57` | `public/img/products/set-jarum-magnet-1.jpg` | image | 4:5 | S1 | Card image for Set Jarum Magnet Simpul everywhere it appears, plus gallery frame 1 on /produk/set-jarum-magnet/ |
-| `M58` | `public/img/products/set-jarum-magnet-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/set-jarum-magnet/ |
-| `M59` | `public/img/products/set-jarum-magnet-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/set-jarum-magnet/ |
-| `M60` | `public/img/products/set-jarum-magnet-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/set-jarum-magnet/ |
-| `M61` | `public/img/products/pouch-kanvas-1.jpg` | image | 4:5 | S1 | Card image for Pouch Simpul Kanvas everywhere it appears, plus gallery frame 1 on /produk/pouch-kanvas/ |
-| `M62` | `public/img/products/pouch-kanvas-2.jpg` | image | 1:1 | S2 | Gallery frame 2 on /produk/pouch-kanvas/ |
+| `M01` | `public/img/hero-simpul-poster.jpg (generated by Media Producer)` | image | 16:9 | H1 still | Poster still for the hero video, and the closing CTA band on the home page |
+| `M02` | `public/video/hero-simpul.mp4 (generated by Media Producer)` | video | 16:9 | H1 | Home page hero background. MANDATORY, R30 and R44. |
+| `M03` | `public/img/categories/pashmina.jpg (generated by Media Producer)` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/pashmina/ |
+| `M04` | `public/img/categories/segi-empat.jpg (generated by Media Producer)` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/segi-empat/ |
+| `M05` | `public/img/categories/bergo-instan.jpg (generated by Media Producer)` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/bergo-instan/ |
+| `M06` | `public/img/categories/sport.jpg (generated by Media Producer)` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/sport/ |
+| `M07` | `public/img/categories/inner-ciput.jpg (generated by Media Producer)` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/inner-ciput/ |
+| `M08` | `public/img/categories/aksesoris.jpg (generated by Media Producer)` | image | 4:3 | S4 | Home page category strip, and the header of /katalog/aksesoris/ |
+| `M09` | `public/img/products/pashmina-alun-voal-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Pashmina Alun Voal everywhere it appears, plus gallery frame 1 on /produk/pashmina-alun-voal/ |
+| `M10` | `public/img/products/pashmina-alun-voal-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-alun-voal/ |
+| `M11` | `public/img/products/pashmina-alun-voal-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-alun-voal/ |
+| `M12` | `public/img/products/pashmina-alun-voal-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-alun-voal/ |
+| `M13` | `public/img/products/pashmina-alun-ceruty-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Pashmina Alun Ceruty Babydoll everywhere it appears, plus gallery frame 1 on /produk/pashmina-alun-ceruty/ |
+| `M14` | `public/img/products/pashmina-alun-ceruty-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-alun-ceruty/ |
+| `M15` | `public/img/products/pashmina-alun-ceruty-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-alun-ceruty/ |
+| `M16` | `public/img/products/pashmina-alun-ceruty-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-alun-ceruty/ |
+| `M17` | `public/img/products/pashmina-bilah-diamond-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Pashmina Bilah Diamond Crepe everywhere it appears, plus gallery frame 1 on /produk/pashmina-bilah-diamond/ |
+| `M18` | `public/img/products/pashmina-bilah-diamond-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-bilah-diamond/ |
+| `M19` | `public/img/products/pashmina-bilah-diamond-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-bilah-diamond/ |
+| `M20` | `public/img/products/pashmina-bilah-diamond-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-bilah-diamond/ |
+| `M21` | `public/img/products/pashmina-sanding-viscose-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Pashmina Sanding Viscose everywhere it appears, plus gallery frame 1 on /produk/pashmina-sanding-viscose/ |
+| `M22` | `public/img/products/pashmina-sanding-viscose-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/pashmina-sanding-viscose/ |
+| `M23` | `public/img/products/pashmina-sanding-viscose-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/pashmina-sanding-viscose/ |
+| `M24` | `public/img/products/pashmina-sanding-viscose-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/pashmina-sanding-viscose/ |
+| `M25` | `public/img/products/segi-empat-titik-voal-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Segi Empat Titik Voal everywhere it appears, plus gallery frame 1 on /produk/segi-empat-titik-voal/ |
+| `M26` | `public/img/products/segi-empat-titik-voal-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-titik-voal/ |
+| `M27` | `public/img/products/segi-empat-titik-voal-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-titik-voal/ |
+| `M28` | `public/img/products/segi-empat-titik-voal-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-titik-voal/ |
+| `M29` | `public/img/products/segi-empat-kanvas-polycotton-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Segi Empat Kanvas Polycotton everywhere it appears, plus gallery frame 1 on /produk/segi-empat-kanvas-polycotton/ |
+| `M30` | `public/img/products/segi-empat-kanvas-polycotton-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-kanvas-polycotton/ |
+| `M31` | `public/img/products/segi-empat-kanvas-polycotton-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-kanvas-polycotton/ |
+| `M32` | `public/img/products/segi-empat-kanvas-polycotton-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-kanvas-polycotton/ |
+| `M33` | `public/img/products/segi-empat-sulur-voal-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Segi Empat Sulur Voal Motif everywhere it appears, plus gallery frame 1 on /produk/segi-empat-sulur-voal/ |
+| `M34` | `public/img/products/segi-empat-sulur-voal-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-sulur-voal/ |
+| `M35` | `public/img/products/segi-empat-sulur-voal-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-sulur-voal/ |
+| `M36` | `public/img/products/segi-empat-sulur-voal-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-sulur-voal/ |
+| `M37` | `public/img/products/segi-empat-satin-lembayung-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Segi Empat Satin Lembayung everywhere it appears, plus gallery frame 1 on /produk/segi-empat-satin-lembayung/ |
+| `M38` | `public/img/products/segi-empat-satin-lembayung-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/segi-empat-satin-lembayung/ |
+| `M39` | `public/img/products/segi-empat-satin-lembayung-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/segi-empat-satin-lembayung/ |
+| `M40` | `public/img/products/segi-empat-satin-lembayung-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/segi-empat-satin-lembayung/ |
+| `M41` | `public/img/products/bergo-rapi-jersey-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Bergo Rapi Jersey everywhere it appears, plus gallery frame 1 on /produk/bergo-rapi-jersey/ |
+| `M42` | `public/img/products/bergo-rapi-jersey-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/bergo-rapi-jersey/ |
+| `M43` | `public/img/products/bergo-rapi-jersey-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/bergo-rapi-jersey/ |
+| `M44` | `public/img/products/bergo-rapi-jersey-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/bergo-rapi-jersey/ |
+| `M45` | `public/img/products/bergo-kerja-instan-voal-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Bergo Kerja Instan Voal everywhere it appears, plus gallery frame 1 on /produk/bergo-kerja-instan-voal/ |
+| `M46` | `public/img/products/bergo-kerja-instan-voal-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/bergo-kerja-instan-voal/ |
+| `M47` | `public/img/products/bergo-kerja-instan-voal-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/bergo-kerja-instan-voal/ |
+| `M48` | `public/img/products/bergo-kerja-instan-voal-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/bergo-kerja-instan-voal/ |
+| `M49` | `public/img/products/sport-hijab-laju-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Sport Hijab Laju everywhere it appears, plus gallery frame 1 on /produk/sport-hijab-laju/ |
+| `M50` | `public/img/products/sport-hijab-laju-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/sport-hijab-laju/ |
+| `M51` | `public/img/products/sport-hijab-laju-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/sport-hijab-laju/ |
+| `M52` | `public/img/products/sport-hijab-laju-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/sport-hijab-laju/ |
+| `M53` | `public/img/products/inner-ninja-antem-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Inner Ninja Antem everywhere it appears, plus gallery frame 1 on /produk/inner-ninja-antem/ |
+| `M54` | `public/img/products/inner-ninja-antem-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/inner-ninja-antem/ |
+| `M55` | `public/img/products/inner-ninja-antem-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/inner-ninja-antem/ |
+| `M56` | `public/img/products/inner-ninja-antem-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/inner-ninja-antem/ |
+| `M57` | `public/img/products/set-jarum-magnet-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Set Jarum Magnet Simpul everywhere it appears, plus gallery frame 1 on /produk/set-jarum-magnet/ |
+| `M58` | `public/img/products/set-jarum-magnet-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/set-jarum-magnet/ |
+| `M59` | `public/img/products/set-jarum-magnet-3.jpg (generated by Media Producer)` | image | 3:4 | S3 | Gallery frame 3 on /produk/set-jarum-magnet/ |
+| `M60` | `public/img/products/set-jarum-magnet-4.jpg (generated by Media Producer)` | image | 1:1 | S5 | Gallery frame 4 on /produk/set-jarum-magnet/ |
+| `M61` | `public/img/products/pouch-kanvas-1.jpg (generated by Media Producer)` | image | 4:5 | S1 | Card image for Pouch Simpul Kanvas everywhere it appears, plus gallery frame 1 on /produk/pouch-kanvas/ |
+| `M62` | `public/img/products/pouch-kanvas-2.jpg (generated by Media Producer)` | image | 1:1 | S2 | Gallery frame 2 on /produk/pouch-kanvas/ |
 | `M63` | `public/img/products/pouch-kanvas-3.jpg` | image | 3:4 | S3 | Gallery frame 3 on /produk/pouch-kanvas/ |
 | `M64` | `public/img/products/pouch-kanvas-4.jpg` | image | 1:1 | S5 | Gallery frame 4 on /produk/pouch-kanvas/ |
-| `M65` | `public/img/articles/cara-pakai-pashmina-kantor.jpg` | image | 16:9 | S7 | Cover for /artikel/cara-pakai-pashmina-simpel-ke-kantor/, and its card in the article index |
-| `M66` | `public/img/articles/beda-voal-ceruty-diamond.jpg` | image | 16:9 | S7 | Cover for /artikel/beda-voal-ceruty-diamond-crepe/, and its card in the article index |
-| `M67` | `public/img/articles/panduan-warna-hijab-2026.jpg` | image | 16:9 | S7 | Cover for /artikel/panduan-warna-hijab-2026/, and its card in the article index |
-| `M68` | `public/img/articles/rahasia-hijab-tidak-letoy.jpg` | image | 16:9 | S7 | Cover for /artikel/rahasia-hijab-tidak-mudah-letoy/, and its card in the article index |
-| `M69` | `public/img/articles/segi-empat-110-atau-115.jpg` | image | 16:9 | S7 | Cover for /artikel/segi-empat-110-atau-115/, and its card in the article index |
-| `M70` | `public/img/articles/sport-hijab-bukan-jersey-biasa.jpg` | image | 16:9 | S7 | Cover for /artikel/sport-hijab-bukan-jersey-biasa/, and its card in the article index |
-| `M71` | `public/img/about/atelier-simpul.jpg` | image | 3:2 | S8 | About page, brand story section |
-| `M72` | `public/img/packaging/simpul-unboxing.jpg` | image | 4:3 | S6 | Product detail page, packaging section |
-| `M73` | `public/img/lookbook/lookbook-pagi.jpg` | image | 3:2 | S1 wide | Home page, lookbook section |
-| `M74` | `public/img/lookbook/lookbook-sore.jpg` | image | 3:2 | S1 wide | About page, closing section |
+| `M65` | `public/img/articles/cara-pakai-pashmina-kantor.jpg (generated by Media Producer)` | image | 16:9 | S7 | Cover for /artikel/cara-pakai-pashmina-simpel-ke-kantor/, and its card in the article index |
+| `M66` | `public/img/articles/beda-voal-ceruty-diamond.jpg (generated by Media Producer)` | image | 16:9 | S7 | Cover for /artikel/beda-voal-ceruty-diamond-crepe/, and its card in the article index |
+| `M67` | `public/img/articles/panduan-warna-hijab-2026.jpg (generated by Media Producer)` | image | 16:9 | S7 | Cover for /artikel/panduan-warna-hijab-2026/, and its card in the article index |
+| `M68` | `public/img/articles/rahasia-hijab-tidak-letoy.jpg (generated by Media Producer)` | image | 16:9 | S7 | Cover for /artikel/rahasia-hijab-tidak-mudah-letoy/, and its card in the article index |
+| `M69` | `public/img/articles/segi-empat-110-atau-115.jpg (generated by Media Producer)` | image | 16:9 | S7 | Cover for /artikel/segi-empat-110-atau-115/, and its card in the article index |
+| `M70` | `public/img/articles/sport-hijab-bukan-jersey-biasa.jpg (generated by Media Producer)` | image | 16:9 | S7 | Cover for /artikel/sport-hijab-bukan-jersey-biasa/, and its card in the article index |
+| `M71` | `public/img/about/atelier-simpul.jpg (generated by Media Producer)` | image | 3:2 | S8 | About page, brand story section |
+| `M72` | `public/img/packaging/simpul-unboxing.jpg (generated by Media Producer)` | image | 4:3 | S6 | Product detail page, packaging section |
+| `M73` | `public/img/lookbook/lookbook-pagi.jpg (generated by Media Producer)` | image | 3:2 | S1 wide | Home page, lookbook section |
+| `M74` | `public/img/lookbook/lookbook-sore.jpg (generated by Media Producer)` | image | 3:2 | S1 wide | About page, closing section |
 
 ---
 
 ## Prompt lengkap, satu per aset
 
-### M01, `public/img/hero-simpul-poster.jpg`
+### M01, `public/img/hero-simpul-poster.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -175,7 +175,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M02, `public/video/hero-simpul.mp4`
+### M02, `public/video/hero-simpul.mp4 (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -225,7 +225,7 @@ AI artefacts, no duplicated pattern seams, no repeating tiled background.
 no fast cuts, no whip pans, no speed ramps, no text overlay, no logo, no lens flare, no stuttering or morphing between frames, no fabric that stretches or melts as it moves.
 ```
 
-### M03, `public/img/categories/pashmina.jpg`
+### M03, `public/img/categories/pashmina.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -270,7 +270,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M04, `public/img/categories/segi-empat.jpg`
+### M04, `public/img/categories/segi-empat.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -315,7 +315,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M05, `public/img/categories/bergo-instan.jpg`
+### M05, `public/img/categories/bergo-instan.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -360,7 +360,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M06, `public/img/categories/sport.jpg`
+### M06, `public/img/categories/sport.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -405,7 +405,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M07, `public/img/categories/inner-ciput.jpg`
+### M07, `public/img/categories/inner-ciput.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -450,7 +450,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M08, `public/img/categories/aksesoris.jpg`
+### M08, `public/img/categories/aksesoris.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -495,7 +495,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M09, `public/img/products/pashmina-alun-voal-1.jpg`
+### M09, `public/img/products/pashmina-alun-voal-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -540,7 +540,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M10, `public/img/products/pashmina-alun-voal-2.jpg`
+### M10, `public/img/products/pashmina-alun-voal-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -585,7 +585,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M11, `public/img/products/pashmina-alun-voal-3.jpg`
+### M11, `public/img/products/pashmina-alun-voal-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -630,7 +630,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M12, `public/img/products/pashmina-alun-voal-4.jpg`
+### M12, `public/img/products/pashmina-alun-voal-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -675,7 +675,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M13, `public/img/products/pashmina-alun-ceruty-1.jpg`
+### M13, `public/img/products/pashmina-alun-ceruty-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -720,7 +720,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M14, `public/img/products/pashmina-alun-ceruty-2.jpg`
+### M14, `public/img/products/pashmina-alun-ceruty-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -765,7 +765,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M15, `public/img/products/pashmina-alun-ceruty-3.jpg`
+### M15, `public/img/products/pashmina-alun-ceruty-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -810,7 +810,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M16, `public/img/products/pashmina-alun-ceruty-4.jpg`
+### M16, `public/img/products/pashmina-alun-ceruty-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -855,7 +855,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M17, `public/img/products/pashmina-bilah-diamond-1.jpg`
+### M17, `public/img/products/pashmina-bilah-diamond-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -900,7 +900,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M18, `public/img/products/pashmina-bilah-diamond-2.jpg`
+### M18, `public/img/products/pashmina-bilah-diamond-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -945,7 +945,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M19, `public/img/products/pashmina-bilah-diamond-3.jpg`
+### M19, `public/img/products/pashmina-bilah-diamond-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -990,7 +990,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M20, `public/img/products/pashmina-bilah-diamond-4.jpg`
+### M20, `public/img/products/pashmina-bilah-diamond-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1035,7 +1035,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M21, `public/img/products/pashmina-sanding-viscose-1.jpg`
+### M21, `public/img/products/pashmina-sanding-viscose-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1080,7 +1080,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M22, `public/img/products/pashmina-sanding-viscose-2.jpg`
+### M22, `public/img/products/pashmina-sanding-viscose-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1125,7 +1125,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M23, `public/img/products/pashmina-sanding-viscose-3.jpg`
+### M23, `public/img/products/pashmina-sanding-viscose-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1170,7 +1170,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M24, `public/img/products/pashmina-sanding-viscose-4.jpg`
+### M24, `public/img/products/pashmina-sanding-viscose-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1215,7 +1215,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M25, `public/img/products/segi-empat-titik-voal-1.jpg`
+### M25, `public/img/products/segi-empat-titik-voal-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1260,7 +1260,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M26, `public/img/products/segi-empat-titik-voal-2.jpg`
+### M26, `public/img/products/segi-empat-titik-voal-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1305,7 +1305,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M27, `public/img/products/segi-empat-titik-voal-3.jpg`
+### M27, `public/img/products/segi-empat-titik-voal-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1350,7 +1350,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M28, `public/img/products/segi-empat-titik-voal-4.jpg`
+### M28, `public/img/products/segi-empat-titik-voal-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1395,7 +1395,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M29, `public/img/products/segi-empat-kanvas-polycotton-1.jpg`
+### M29, `public/img/products/segi-empat-kanvas-polycotton-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1440,7 +1440,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M30, `public/img/products/segi-empat-kanvas-polycotton-2.jpg`
+### M30, `public/img/products/segi-empat-kanvas-polycotton-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1485,7 +1485,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M31, `public/img/products/segi-empat-kanvas-polycotton-3.jpg`
+### M31, `public/img/products/segi-empat-kanvas-polycotton-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1530,7 +1530,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M32, `public/img/products/segi-empat-kanvas-polycotton-4.jpg`
+### M32, `public/img/products/segi-empat-kanvas-polycotton-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1575,7 +1575,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M33, `public/img/products/segi-empat-sulur-voal-1.jpg`
+### M33, `public/img/products/segi-empat-sulur-voal-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1620,7 +1620,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M34, `public/img/products/segi-empat-sulur-voal-2.jpg`
+### M34, `public/img/products/segi-empat-sulur-voal-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1665,7 +1665,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M35, `public/img/products/segi-empat-sulur-voal-3.jpg`
+### M35, `public/img/products/segi-empat-sulur-voal-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1710,7 +1710,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M36, `public/img/products/segi-empat-sulur-voal-4.jpg`
+### M36, `public/img/products/segi-empat-sulur-voal-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1755,7 +1755,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M37, `public/img/products/segi-empat-satin-lembayung-1.jpg`
+### M37, `public/img/products/segi-empat-satin-lembayung-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1800,7 +1800,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M38, `public/img/products/segi-empat-satin-lembayung-2.jpg`
+### M38, `public/img/products/segi-empat-satin-lembayung-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1845,7 +1845,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M39, `public/img/products/segi-empat-satin-lembayung-3.jpg`
+### M39, `public/img/products/segi-empat-satin-lembayung-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1890,7 +1890,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M40, `public/img/products/segi-empat-satin-lembayung-4.jpg`
+### M40, `public/img/products/segi-empat-satin-lembayung-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1935,7 +1935,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M41, `public/img/products/bergo-rapi-jersey-1.jpg`
+### M41, `public/img/products/bergo-rapi-jersey-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -1980,7 +1980,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M42, `public/img/products/bergo-rapi-jersey-2.jpg`
+### M42, `public/img/products/bergo-rapi-jersey-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2025,7 +2025,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M43, `public/img/products/bergo-rapi-jersey-3.jpg`
+### M43, `public/img/products/bergo-rapi-jersey-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2070,7 +2070,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M44, `public/img/products/bergo-rapi-jersey-4.jpg`
+### M44, `public/img/products/bergo-rapi-jersey-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2115,7 +2115,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M45, `public/img/products/bergo-kerja-instan-voal-1.jpg`
+### M45, `public/img/products/bergo-kerja-instan-voal-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2160,7 +2160,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M46, `public/img/products/bergo-kerja-instan-voal-2.jpg`
+### M46, `public/img/products/bergo-kerja-instan-voal-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2205,7 +2205,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M47, `public/img/products/bergo-kerja-instan-voal-3.jpg`
+### M47, `public/img/products/bergo-kerja-instan-voal-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2250,7 +2250,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M48, `public/img/products/bergo-kerja-instan-voal-4.jpg`
+### M48, `public/img/products/bergo-kerja-instan-voal-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2295,7 +2295,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M49, `public/img/products/sport-hijab-laju-1.jpg`
+### M49, `public/img/products/sport-hijab-laju-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2340,7 +2340,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M50, `public/img/products/sport-hijab-laju-2.jpg`
+### M50, `public/img/products/sport-hijab-laju-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2385,7 +2385,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M51, `public/img/products/sport-hijab-laju-3.jpg`
+### M51, `public/img/products/sport-hijab-laju-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2430,7 +2430,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M52, `public/img/products/sport-hijab-laju-4.jpg`
+### M52, `public/img/products/sport-hijab-laju-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2475,7 +2475,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M53, `public/img/products/inner-ninja-antem-1.jpg`
+### M53, `public/img/products/inner-ninja-antem-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2520,7 +2520,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M54, `public/img/products/inner-ninja-antem-2.jpg`
+### M54, `public/img/products/inner-ninja-antem-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2565,7 +2565,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M55, `public/img/products/inner-ninja-antem-3.jpg`
+### M55, `public/img/products/inner-ninja-antem-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2610,7 +2610,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M56, `public/img/products/inner-ninja-antem-4.jpg`
+### M56, `public/img/products/inner-ninja-antem-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2655,7 +2655,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M57, `public/img/products/set-jarum-magnet-1.jpg`
+### M57, `public/img/products/set-jarum-magnet-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2700,7 +2700,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M58, `public/img/products/set-jarum-magnet-2.jpg`
+### M58, `public/img/products/set-jarum-magnet-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2745,7 +2745,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M59, `public/img/products/set-jarum-magnet-3.jpg`
+### M59, `public/img/products/set-jarum-magnet-3.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2790,7 +2790,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M60, `public/img/products/set-jarum-magnet-4.jpg`
+### M60, `public/img/products/set-jarum-magnet-4.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2835,7 +2835,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M61, `public/img/products/pouch-kanvas-1.jpg`
+### M61, `public/img/products/pouch-kanvas-1.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -2880,7 +2880,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M62, `public/img/products/pouch-kanvas-2.jpg`
+### M62, `public/img/products/pouch-kanvas-2.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -3015,7 +3015,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M65, `public/img/articles/cara-pakai-pashmina-kantor.jpg`
+### M65, `public/img/articles/cara-pakai-pashmina-kantor.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -3060,7 +3060,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M66, `public/img/articles/beda-voal-ceruty-diamond.jpg`
+### M66, `public/img/articles/beda-voal-ceruty-diamond.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -3105,7 +3105,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M67, `public/img/articles/panduan-warna-hijab-2026.jpg`
+### M67, `public/img/articles/panduan-warna-hijab-2026.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -3150,7 +3150,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M68, `public/img/articles/rahasia-hijab-tidak-letoy.jpg`
+### M68, `public/img/articles/rahasia-hijab-tidak-letoy.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -3195,7 +3195,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M69, `public/img/articles/segi-empat-110-atau-115.jpg`
+### M69, `public/img/articles/segi-empat-110-atau-115.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -3240,7 +3240,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M70, `public/img/articles/sport-hijab-bukan-jersey-biasa.jpg`
+### M70, `public/img/articles/sport-hijab-bukan-jersey-biasa.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -3285,7 +3285,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M71, `public/img/about/atelier-simpul.jpg`
+### M71, `public/img/about/atelier-simpul.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -3330,7 +3330,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M72, `public/img/packaging/simpul-unboxing.jpg`
+### M72, `public/img/packaging/simpul-unboxing.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -3375,7 +3375,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M73, `public/img/lookbook/lookbook-pagi.jpg`
+### M73, `public/img/lookbook/lookbook-pagi.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
@@ -3420,7 +3420,7 @@ studio smear, no heavy vignette, no neon colour cast, no unnatural colour gradin
 AI artefacts, no duplicated pattern seams, no repeating tiled background.
 ```
 
-### M74, `public/img/lookbook/lookbook-sore.jpg`
+### M74, `public/img/lookbook/lookbook-sore.jpg (generated by Media Producer)`
 
 | | |
 | --- | --- |
