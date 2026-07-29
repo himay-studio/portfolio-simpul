@@ -12,6 +12,17 @@ const HELP = [
   { href: "/faq/", label: "Pertanyaan umum" },
 ];
 
+/* R59: kontak/akun/masuk only ever rendered inside the mobile drawer
+   (SECONDARY_NAV in Header.tsx), which is display:none at >=1025px, so a
+   desktop visitor had no path to these pages at all. The footer renders on
+   every breakpoint, so linking them here closes the gap without touching the
+   desktop topbar's icon count. */
+const ACCOUNT = [
+  { href: "/kontak/", label: "Halaman kontak" },
+  { href: "/akun/", label: "Akun saya" },
+  { href: "/masuk/", label: "Masuk" },
+];
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -86,6 +97,11 @@ export default function Footer() {
               <li className="foot-muted">{CONTACT.email}</li>
               <li className="foot-muted">{CONTACT.addressLine1}</li>
               <li className="foot-muted">{CONTACT.addressLine2}</li>
+              {ACCOUNT.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href}>{l.label}</Link>
+                </li>
+              ))}
             </ul>
             <span className="foot-head" style={{ marginTop: "var(--s-6)" }}>
               Jam operasional
