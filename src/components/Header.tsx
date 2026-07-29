@@ -30,6 +30,15 @@ export default function Header() {
      click. Stashed here is the index that was open BEFORE this hover gesture
      began, so the click handler toggles relative to that instead. */
   const pendingBaseRef = useRef<number | null>(null);
+  /* Escape closes the panel then restores focus to its trigger button, but
+     that same trigger's <li> also opens on focus (R32/R16). Restoring focus
+     re-fires that onFocus handler in the same synchronous dispatch, queuing
+     a second setOpenIndex(i) right after the close's setOpenIndex(null) —
+     the later update wins, so the panel silently reopens and Escape looks
+     like it did nothing (aria-expanded and the panel agree, but both stay
+     "open" instead of closing). This flag suppresses the onFocus opener for
+     exactly that programmatic refocus. */
+  const restoringFocusRef = useRef(false);
 
   /* R32: hover opens on desktop only. Below 1025px there is no mega menu at
      all, the nav collapses into the drawer, so hover must not fire there. */
@@ -59,9 +68,11 @@ export default function Header() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Escape") return;
       setOpenIndex(null);
+      restoringFocusRef.current = true;
       navRef.current
         ?.querySelectorAll<HTMLButtonElement>("button.nav-link")
         ?.[openIndex]?.focus();
+      restoringFocusRef.current = false;
     };
 
     document.addEventListener("mousedown", onDocDown);
@@ -160,7 +171,10 @@ export default function Header() {
                   open={openIndex === i}
                   current={isCurrent(item.href)}
                   onPointerEnter={() => onPointerEnterItem(i)}
-                  onFocusOpen={() => hoverOpen(i)}
+                  onFocusOpen={() => {
+                    if (restoringFocusRef.current) return;
+                    hoverOpen(i);
+                  }}
                   onHoverClose={hoverClose}
                   onToggle={() => {
                     const base = pendingBaseRef.current;
