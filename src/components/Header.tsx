@@ -22,6 +22,14 @@ export default function Header() {
 
   const navRef = useRef<HTMLElement | null>(null);
   const closeTimer = useRef<number | null>(null);
+  /* R60: a real mouse click is one gesture that fires mouseenter, then focus,
+     then click. Mouseenter already opens the panel (R32 hover) before the
+     click's own toggle logic runs, so a naive `openIndex === i ? close : open`
+     read on click sees the state hover just wrote and immediately closes what
+     it only just opened, leaving aria-expanded="false" after the very first
+     click. Stashed here is the index that was open BEFORE this hover gesture
+     began, so the click handler toggles relative to that instead. */
+  const pendingBaseRef = useRef<number | null>(null);
 
   /* R32: hover opens on desktop only. Below 1025px there is no mega menu at
      all, the nav collapses into the drawer, so hover must not fire there. */
@@ -75,6 +83,15 @@ export default function Header() {
     if (!isDesktop) return;
     cancelClose();
     setOpenIndex(i);
+  };
+
+  /* only the pointer-enter path stashes the pre-gesture base. onFocus reuses
+     hoverOpen directly (see JSX below) so a focus event that follows in the
+     same click gesture cannot clobber the base with the already-open index. */
+  const onPointerEnterItem = (i: number) => {
+    if (!isDesktop) return;
+    pendingBaseRef.current = openIndex;
+    hoverOpen(i);
   };
 
   /* a small grace period so the pointer can cross the 1px gap between the
@@ -142,9 +159,14 @@ export default function Header() {
                   index={i}
                   open={openIndex === i}
                   current={isCurrent(item.href)}
-                  onHoverOpen={() => hoverOpen(i)}
+                  onPointerEnter={() => onPointerEnterItem(i)}
+                  onFocusOpen={() => hoverOpen(i)}
                   onHoverClose={hoverClose}
-                  onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+                  onToggle={() => {
+                    const base = pendingBaseRef.current;
+                    pendingBaseRef.current = null;
+                    setOpenIndex(base === i ? null : i);
+                  }}
                   onTriggerKey={(e) => onTriggerKey(e, i)}
                 />
               ))}
@@ -211,7 +233,8 @@ function NavListItem({
   index,
   open,
   current,
-  onHoverOpen,
+  onPointerEnter,
+  onFocusOpen,
   onHoverClose,
   onToggle,
   onTriggerKey,
@@ -220,7 +243,8 @@ function NavListItem({
   index: number;
   open: boolean;
   current: boolean;
-  onHoverOpen: () => void;
+  onPointerEnter: () => void;
+  onFocusOpen: () => void;
   onHoverClose: () => void;
   onToggle: () => void;
   onTriggerKey: (e: React.KeyboardEvent) => void;
@@ -245,9 +269,9 @@ function NavListItem({
     <li
       className="nav-item"
       data-open={open}
-      onMouseEnter={onHoverOpen}
+      onMouseEnter={onPointerEnter}
       onMouseLeave={onHoverClose}
-      onFocus={onHoverOpen}
+      onFocus={onFocusOpen}
     >
       <button
         type="button"
