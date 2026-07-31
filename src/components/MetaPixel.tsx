@@ -2,6 +2,7 @@
 
 import Script from "next/script";
 import { useEffect } from "react";
+import { SITE } from "@/lib/site";
 
 /**
  * R36, Meta Pixel plus the client half of CAPI dedup.
@@ -32,9 +33,16 @@ export default function MetaPixel() {
 
     const eventID = makeEventId();
 
+    // HIM-356: same portfolio_category payload on both the Pixel PageView
+    // params and the CAPI custom_data below, so a category-absent site sends
+    // `{}` to both rather than an empty string or a literal "undefined".
+    const categoryData: { portfolio_category?: string } = SITE.category
+      ? { portfolio_category: SITE.category }
+      : {};
+
     // browser side
     const w = window as unknown as { fbq?: (...args: unknown[]) => void };
-    w.fbq?.("track", "PageView", {}, { eventID });
+    w.fbq?.("track", "PageView", categoryData, { eventID });
 
     // server side, same eventID. Fire and forget, and swallow every failure:
     // a missing CAPI token returns 204 from the Function and must not surface.
@@ -45,6 +53,7 @@ export default function MetaPixel() {
         eventName: "PageView",
         eventId: eventID,
         eventSourceUrl: window.location.href,
+        customData: categoryData,
       }),
       keepalive: true,
     }).catch(() => {

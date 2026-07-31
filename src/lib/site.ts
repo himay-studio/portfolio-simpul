@@ -17,6 +17,12 @@ export const SITE = {
    * is one. Simpul is a fictional showcase brand, so we self canonicalise.
    */
   clientDomain: null as string | null,
+  /**
+   * HIM-356 classification dimension for retargeting audiences. Simpul sells
+   * a modest-fashion scarf/hijab label (see src/data/products.ts), so this
+   * reads as a fashion catalog site.
+   */
+  category: "fashion" as string | null,
   himay: {
     name: "Himay Studio",
     url: "https://himaystudio.com",

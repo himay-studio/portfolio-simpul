@@ -64,8 +64,11 @@ export default function RootLayout({
         {/* R36: GTM as high as possible in <head>. GA4 is delivered through
             this container so himaystudio.com and every portfolio subdomain
             roll up into one property. */}
+        {/* HIM-356: push the classification dimension before the GTM loader
+            runs so any container variable reading it sees the value on the
+            very first event. Absent category means this push is skipped. */}
         <Script id="gtm-head" strategy="beforeInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${SITE.gtmId}');`}
+          {`${SITE.category ? `window.dataLayer=window.dataLayer||[];window.dataLayer.push({portfolio_category:${JSON.stringify(SITE.category)}});` : ""}(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${SITE.gtmId}');`}
         </Script>
       </head>
       <body>
